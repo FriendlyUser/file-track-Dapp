@@ -44,12 +44,11 @@ matrix:
         - doxity compile
         - doxity publish
         - mv -v olddocs/* docs/
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  local_dir: docs
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  on:
-    branch: master
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        local_dir: docs
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep-history: true
+        on:
+          branch: master
