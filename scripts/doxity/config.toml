@@ -1,7 +1,7 @@
-linkPrefix = ""
+linkPrefix = "/IPFS-Dapp"
 name = "drizzle-box"
 version = "1.0.0"
-buildTime = 2018-09-22T15:11:12.103Z
+buildTime = 2018-09-22T17:35:53.854Z
 target = "doxity"
 src = "contracts/*"
 dir = "pages/docs"

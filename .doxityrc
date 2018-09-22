@@ -1,6 +1,6 @@
 {
   // gatsby project source files directory
-  "target": "doxity",
+  "target": "scripts/doxity",
   // folder that contains the contracts you want to compile
   "src": "contracts/*",
   // folder in gatsby project to dump contract data

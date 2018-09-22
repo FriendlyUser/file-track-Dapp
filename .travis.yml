@@ -3,11 +3,8 @@ matrix:
   include:
     # Smart contract tests
     - language: node_js
-      node:
-        - "7"
+      node_js:
         - "8"
-        - "9"
-        - "tip"        
       before_script:
         - npm install -g truffle ganache-cli
         - npm install 
@@ -19,10 +16,8 @@ matrix:
 
     # Front end tests
     - language: node_js
-      node: 
-        - "7"
+      node_js: 
         - "8"
-        - "9"
       before_script:
         - npm install 
       script:
@@ -31,8 +26,7 @@ matrix:
        
    # Deploying
     - language: node_js
-      node_js:
-        - "7"      
+      node_js:    
         - "8"      
       before_script:
         - npm install -g @digix/doxity
@@ -43,10 +37,10 @@ matrix:
       script: 
         - doxity build
 
-#deploy:
-#  provider: pages
-#  skip-cleanup: true
-#  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-#  keep-history: true
-#  on:
-#    branch: master
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
