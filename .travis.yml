@@ -34,9 +34,9 @@ matrix:
         - sudo add-apt-repository -y ppa:ethereum/ethereum
         - sudo apt-get update
         - sudo apt-get -y install solc
-        - cd scripts/doxity 
+        - cd doxity 
         - npm install
-        - cd ../../
+        - cd ../
         # install the doxity dependencies
       script: 
         - npm install -g gatsby
