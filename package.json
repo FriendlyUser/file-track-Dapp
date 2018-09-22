@@ -1,5 +1,5 @@
 {
-  "name": "drizzle-box Cool",
+  "name": "drizzle-box",
   "version": "1.0.0",
   "devDependencies": {
     "ganache-cli": "^6.1.6",
