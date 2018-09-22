@@ -3,7 +3,6 @@ matrix:
     # Smart contract tests
     - language: node_js
       node_js:
-        - "iojs"
         - "7"      
       install:
         - npm install -g truffle ganache-cli
