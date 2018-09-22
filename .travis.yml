@@ -3,8 +3,11 @@ matrix:
     # Smart contract tests
     - language: node_js
       node_js:
-        - "8"      
-      install:
+        - "7"
+        - "8"
+        - "9"
+        - "tip"        
+      before_script:
         - npm install -g truffle ganache-cli
         - npm install 
       script: 
@@ -25,9 +28,10 @@ matrix:
        
    # Deploying
     - language: node_js
-      node: 
+      node_js:
+        - "7"      
         - "8"      
-      install:
+      before_script:
         - npm install -g doxity 
         - npm install 
       script: 
