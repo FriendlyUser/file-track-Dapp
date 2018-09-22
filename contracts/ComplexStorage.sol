@@ -26,6 +26,7 @@ contract ComplexStorage {
 		string deviceYear;
 		string batteryWearLevel;
 	}
+    
     /// @dev anime
 	constructor() public {
 		address address1 = 0xbCcc714d56bc0da0fd33d96d2a87b680dD6D0DF6;

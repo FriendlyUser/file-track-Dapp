@@ -5,7 +5,6 @@
   "out": "docs",
   "source": "https://github.com/DigixGlobal/doxity-gatsby-starter-project/archive/9445d59056058159ce25d7cd1643039523718553.tar.gz",
   "whitelist": {
-    // the keyname `all` will be used for whitelist defaults
     "all": {
       "abi": true,
       "methods": true,
