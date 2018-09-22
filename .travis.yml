@@ -1,8 +1,9 @@
+sudo: required
 matrix:
   include:
     # Smart contract tests
     - language: node_js
-      node_js:
+      node:
         - "7"
         - "8"
         - "9"
@@ -18,8 +19,10 @@ matrix:
 
     # Front end tests
     - language: node_js
-      node_js: 
+      node: 
+        - "7"
         - "8"
+        - "9"
       before_script:
         - npm install 
       script:
@@ -32,7 +35,18 @@ matrix:
         - "7"      
         - "8"      
       before_script:
-        - npm install -g doxity 
+        - npm install -g @digix/doxity
+        - sudo add-apt-repository -y ppa:ethereum/ethereum
+        - sudo apt-get update
+        - sudo apt-get -y install solc
         - npm install 
       script: 
-        - doxity build 
+        - doxity build
+
+#deploy:
+#  provider: pages
+#  skip-cleanup: true
+#  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#  keep-history: true
+#  on:
+#    branch: master
