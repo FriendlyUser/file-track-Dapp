@@ -3,8 +3,6 @@ matrix:
     # Smart contract tests
     - language: node_js
       node: 
-        - release
-        - tip
         - 8.11.1
       services:
         - trufflesuite/ganache-cli
@@ -29,9 +27,8 @@ matrix:
    # Coverage/Documentation and testing out build
     - language: node_js
       node: 
-        - release
-        - tip
         - 8.11.1
+        - release
       services:
         - trufflesuite/ganache-cli
       install:
@@ -46,8 +43,6 @@ matrix:
    # Deploying
     - language: node_js
       node: 
-        - release
-        - tip
         - 8.11.1
       install:
         - npm install -g truffle ganache-cli
@@ -56,4 +51,13 @@ matrix:
         - npm run ganache
         - sleep 5
         - truffle migrate --network development
-        - npm run test/truffle 
+        - npm run test/truffle
+   # Documentation
+   - language: node_js
+      node:
+        - 8.11.1
+      install:
+        - npm install -g @digix/doxity
+        - npm install 
+      script:
+        - doxity build

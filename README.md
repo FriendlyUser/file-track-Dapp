@@ -68,3 +68,24 @@ convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
     ```javascript
     npm run build
     ```
+    
+ Other doxity options
+```sh
+  "interaction": {
+    "network": "2",
+    "providerUrl": "https://morden.infura.io/sign_up_to_get_a_hash"
+  },
+  // option to whitelist various data
+  "whitelist": {
+    // the keyname `all` will be used for whitelist defaults
+    "all": {
+      "abi": true,
+      "methods": true,
+      "bytecode": false, // bytecode is false or undefined, it won't be shown
+      "source": false // source is false or undefined, won't be shown
+    },
+    "DigixMath": {
+      "source": true // source code uniquely shown for this contract, bytecode still hidden
+    }
+  }
+``` 
