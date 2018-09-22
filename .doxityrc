@@ -2,17 +2,5 @@
   "target": "scripts/doxity",
   "src": "contracts/*",
   "dir": "pages/docs",
-  "out": "docs",
-  "source": "https://github.com/DigixGlobal/doxity-gatsby-starter-project/archive/9445d59056058159ce25d7cd1643039523718553.tar.gz",
-  "whitelist": {
-    "all": {
-      "abi": true,
-      "methods": true,
-      "bytecode": true, 
-      "source": true 
-    },
-    "DigixMath": {
-      "source": true // source code uniquely shown for this contract, bytecode still hidden
-    }
-  }
+  "out": "docs"
 }

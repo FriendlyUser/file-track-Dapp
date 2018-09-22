@@ -40,7 +40,9 @@ matrix:
         # install the doxity dependencies
       script: 
         - npm install -g gatsby
-        - doxity build
+        - mv docs olddocs
+        - doxity compile
+        - doxity publish
 
 deploy:
   provider: pages
