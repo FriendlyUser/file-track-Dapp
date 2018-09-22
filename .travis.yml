@@ -2,9 +2,7 @@ matrix:
   include:
     # Smart contract tests
     - language: node_js
-      node: 
-        - 8.11.1
-        - tip
+      node: 9
       install:
         - npm install -g truffle ganache-cli
         - npm install 
@@ -25,9 +23,7 @@ matrix:
        
    # Deploying
     - language: node_js
-      node: 
-        - 8.11.1
-        - tip
+      node: 9      
       install:
         - npm install -g doxity 
         - npm install 
