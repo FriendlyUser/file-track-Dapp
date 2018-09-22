@@ -6,3 +6,9 @@
 *.svg
 *.gz
 *.pdf
+*.zip
+/node_modules
+
+/build_webpack
+/build
+doxity/
