@@ -11,7 +11,7 @@ matrix:
         - npm run ganache
         - sleep 5
         - truffle migrate --network development
-        - npm run test/truffle
+        - truffle test
 
     # Front end tests
     - language: node_js
