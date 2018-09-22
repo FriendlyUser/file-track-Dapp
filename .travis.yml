@@ -43,24 +43,24 @@ matrix:
         - doxity compile
         - doxity publish
         - mv -v olddocs/* docs/
-        
+     
    # Python mk docs 
-   -  language: python
-      python:
-        - "2.7"
-        - "3.7"
-      install:
-        - pip install mkdocs
-        - npm i -g @soldoc/soldoc
-      script:
-        - soldoc --in ./contracts --out ./docs/contracts
-        - mkdocs build
-        - mv -v docs/* site/
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        local_dir: site
-        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        keep-history: true
-        on:
-          branch: master
+    -  language: python
+       python:
+         - "2.7"
+         - "3.7"
+       before_script:
+         - pip install mkdocs
+         - npm i -g @soldoc/soldoc
+       script:
+         - soldoc --in ./contracts --out ./docs/contracts
+         - mkdocs build
+         - mv -v docs/* site/
+       deploy:
+         provider: pages
+         skip-cleanup: true
+         local_dir: site
+         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+         keep-history: true
+         on:
+           branch: master
