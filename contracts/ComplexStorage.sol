@@ -1,5 +1,8 @@
 pragma solidity ^0.4.23;
 
+/// @title ComplexStorage
+/// @author David Li
+/// @notice test
 contract ComplexStorage {
 
 	uint public storeduint1 = 15;
@@ -23,7 +26,7 @@ contract ComplexStorage {
 		string deviceYear;
 		string batteryWearLevel;
 	}
-
+    /// @dev anime
 	constructor() public {
 		address address1 = 0xbCcc714d56bc0da0fd33d96d2a87b680dD6D0DF6;
 		address address2 = 0xaee905FdD3ED851e48d22059575b9F4245A82B04;

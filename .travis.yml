@@ -29,12 +29,16 @@ matrix:
       node_js:    
         - "8"      
       before_script:
-        - npm install -g @digix/doxity
+        - npm install -g @digix/doxity gatsby
         - sudo add-apt-repository -y ppa:ethereum/ethereum
         - sudo apt-get update
         - sudo apt-get -y install solc
-        - npm install 
+        - cd scripts/doxity 
+        -  npm install
+        - cd ../../
+        # install the doxity dependencies
       script: 
+        - npm install -g gatsby
         - doxity build
 
 deploy:
