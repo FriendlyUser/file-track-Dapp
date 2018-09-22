@@ -55,7 +55,9 @@ matrix:
        script:
          - soldoc --in ./contracts --out ./docs/contracts
          - mkdocs build
-         - mv -v docs/* site/
+         - cd site 
+         - ls 
+         #- mv docs/ site/
        deploy:
          provider: pages
          skip-cleanup: true
