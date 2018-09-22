@@ -35,7 +35,7 @@ matrix:
         - sudo apt-get update
         - sudo apt-get -y install solc
         - cd scripts/doxity 
-        - yarn install
+        - npm install
         - cd ../../
         # install the doxity dependencies
       script: 
