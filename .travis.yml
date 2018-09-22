@@ -23,35 +23,7 @@ matrix:
       script:
         # Fix tests later 
         - npm run test 
-   
-   # Coverage/Documentation and testing out build
-    - language: node_js
-      node: 
-        - 8.11.1
-        - release
-      services:
-        - trufflesuite/ganache-cli
-      install:
-        - npm install -g truffle ganache-cli
-        - npm install 
-      script: 
-        - npm run ganache
-        - sleep 5
-        - truffle migrate --network development
-        - npm run test/truffle 
-        
-   # Deploying
-    - language: node_js
-      node: 
-        - 8.11.1
-      install:
-        - npm install -g truffle ganache-cli
-        - npm install 
-      script: 
-        - npm run ganache
-        - sleep 5
-        - truffle migrate --network development
-        - npm run test/truffle
+ 
    # Documentation
    - language: node_js
       node:
