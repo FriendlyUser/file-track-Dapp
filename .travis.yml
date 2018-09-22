@@ -20,6 +20,7 @@ matrix:
         - "8"
       before_script:
         - npm install 
+        - ./node_modules/truffle/build/cli.bundled.js compile
       script:
         # Fix tests later 
         - npm run test 
