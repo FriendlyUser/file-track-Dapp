@@ -1,0 +1,12 @@
+site_name: File Track IPFS Dapp
+repo_url: https://github.com/FriendlyUser/file-track-Dapp
+site_description: Documentation for my project
+site_author: David Li
+copyright: Whatever goes
+nav:
+  - 'Introduction': 'index.md'
+  - 'Contracts':    
+      - 'Migrations': 'contracts/Migrations.md'
+      - 'Simple Storage': 'contracts/SimpleStorage.md'
+      - 'Complex Storage': 'contracts/ComplexStorage.md'
+      - 'Tutorial Token': 'contracts/TutorialToken.md'

@@ -1,6 +1,7 @@
 {
-  "name": "drizzle-box",
+  "name": "file-track-ipfs",
   "version": "1.0.0",
+  "repository": "https://github.com/FriendlyUser/file-track-Dapp"
   "devDependencies": {
     "ganache-cli": "^6.1.6",
     "openzeppelin-solidity": "^1.10.0",
