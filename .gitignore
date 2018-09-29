@@ -10,3 +10,4 @@
 /node_modules
 
 /build_webpack
+package-lock.json
