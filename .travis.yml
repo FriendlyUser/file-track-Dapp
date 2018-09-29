@@ -22,7 +22,6 @@ matrix:
         - "8"
       script:
         - npm install 
-        - ./node_modules/truffle/build/cli.bundled.js compile
         # Fix tests later 
         - npm run test 
           
