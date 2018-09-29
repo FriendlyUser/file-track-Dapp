@@ -13,6 +13,8 @@ matrix:
         - sleep 5
         - truffle migrate --network development
         - truffle test
+      after_script:
+        - npm run coverage && cat coverage/lcov.info | coveralls
       before_deploy:
         - npm run build
       deploy:
