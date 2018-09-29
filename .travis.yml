@@ -1,0 +1,84 @@
+sudo: required
+matrix:
+  include:
+    # Smart contract tests
+    - language: node_js
+      node_js:
+        - "8"
+      before_script:
+        - npm install -g truffle ganache-cli
+      script: 
+        - npm install 
+        - npm run ganache
+        - sleep 5
+        - truffle migrate --network development
+        - truffle test
+      after_script:
+        - npm run coverage && cat coverage/lcov.info | coveralls
+
+    # Front end tests
+    - language: node_js
+      node_js: 
+        - "8"
+      script:
+        - npm install 
+        # Fix tests later 
+        - npm run test 
+          
+   # Deploying doxity, doesn't work lol
+    - language: node_js
+      node_js:    
+        - "8"      
+      before_script:
+        - npm install -g @digix/doxity gatsby
+        - sudo add-apt-repository -y ppa:ethereum/ethereum
+        - sudo apt-get update
+        - sudo apt-get -y install solc
+        - cd doxity 
+        - npm install
+        - cd ../
+        # install the doxity dependencies
+      script: 
+        - mv docs olddocs
+        - doxity compile
+        - doxity publish
+        - mv -v olddocs/* docs/
+      allow_failures:
+        - node_js: 8
+        
+   # Deploy app 
+    - language: node_js
+      node_js:    
+        - "8"      
+      script: 
+        - npm install
+      before_deploy:
+        - npm run build
+      deploy:
+        provider: surge
+        project:  build_webpack
+        domain: IPFSDapp.surge.sh  
+        on:
+          all_branches: true
+   # Python mk docs 
+    -  language: python
+       python:
+         - "2.7"
+         - "3.7"
+       before_script:
+         - pip install mkdocs
+         - npm i -g @soldoc/soldoc
+       script:
+         - soldoc --in ./contracts --out ./docs/contracts
+         - mkdocs build
+         - cd site 
+         - ls 
+         #- mv docs/ site/
+       deploy:
+         provider: pages
+         skip-cleanup: true
+         local_dir: site
+         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+         keep-history: true
+         on:
+           branch: master

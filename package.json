@@ -1,16 +1,16 @@
 {
-  "name": "drizzle-box",
+  "name": "file-track-ipfs",
   "version": "1.0.0",
+  "repository": "https://github.com/FriendlyUser/file-track-Dapp",
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "ganache-cli": "^6.1.6",
     "openzeppelin-solidity": "^1.10.0",
+    "solidity-coverage": "^0.5.11",
     "truffle": "^4.1.13",
-    "truffle-hdwallet-provider": "^0.0.5"
+    "truffle-hdwallet-provider": "0.0.5"
   },
   "dependencies": {
-    "drizzle": "^1.2.2",
-    "drizzle-react": "^1.1.1",
-    "drizzle-react-components": "^1.2.0",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -21,8 +21,11 @@
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
     "css-loader": "0.28.7",
-    "dotenv": "4.0.0",
-    "dotenv-expand": "4.2.0",
+    "dotenv": "^4.0.0",
+    "dotenv-expand": "^4.2.0",
+    "drizzle": "^1.2.2",
+    "drizzle-react": "^1.1.1",
+    "drizzle-react-components": "^1.2.0",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
@@ -63,7 +66,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "truffle compile && node scripts/build.js",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "chain": "ganache-cli",
     "ganache": "ganache-cli -p 8545 -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' > /dev/null &",

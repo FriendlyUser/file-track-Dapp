@@ -1,17 +1,14 @@
-[![Build Status](https://travis-ci.org/FriendlyUser/file-track-Dapp.svg?branch=master)](https://travis-ci.org/FriendlyUser/file-track-Dapp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/FriendlyUser/file-track-Dapp/badge.svg?branch=master)](https://coveralls.io/github/FriendlyUser/file-track-Dapp?branch=master)
-
 # File-track Dapp 
 
 
 Simple Dapp that can track files uploaded to IPFS.
 
-Available at IPFSDapp.surge.sh
 
-![Dapp Architecture](docs/dapp-arch.png)
+![Dapp Architecture](dapp-arch.png)
 
 Upload and track IPFS files securely on the Ethereum Network, supports UPORT
 
-![Dapp Structure](docs/ipfs-dapp.png)
+![Dapp Structure](ipfs-dapp.png)
 
 Images are converted from pdf to png using imagemagick
 
