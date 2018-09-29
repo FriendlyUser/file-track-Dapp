@@ -7,8 +7,8 @@ matrix:
         - "8"
       before_script:
         - npm install -g truffle ganache-cli
-        - npm install 
       script: 
+        - npm install 
         - npm run ganache
         - sleep 5
         - truffle migrate --network development
@@ -19,9 +19,9 @@ matrix:
       node_js: 
         - "8"
       before_script:
-        - npm install 
         - ./node_modules/truffle/build/cli.bundled.js compile
       script:
+        - npm install 
         # Fix tests later 
         - npm run test 
        
@@ -58,8 +58,8 @@ matrix:
         provider: surge
         project: ./build_webpack/
         domain: IPFSDapp.surge.sh  
-#        on:
-#          branch: master
+        on:
+          all_branches: true
         
    # Python mk docs 
     -  language: python
