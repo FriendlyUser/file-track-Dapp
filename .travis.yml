@@ -15,23 +15,14 @@ matrix:
         - truffle test
       after_script:
         - npm run coverage && cat coverage/lcov.info | coveralls
-      before_deploy:
-        - npm run build
-      deploy:
-        provider: surge
-        project: ./build_webpack/
-        domain: IPFSDapp.surge.sh  
-        on:
-          all_branches: true
 
     # Front end tests
     - language: node_js
       node_js: 
         - "8"
-      before_script:
-        - ./node_modules/truffle/build/cli.bundled.js compile
       script:
         - npm install 
+        - ./node_modules/truffle/build/cli.bundled.js compile
         # Fix tests later 
         - npm run test 
           
@@ -56,6 +47,20 @@ matrix:
       allow_failures:
         - node_js: 8
         
+   # Deploy app 
+    - language: node_js
+      node_js:    
+        - "8"      
+      script: 
+        - npm install
+      before_deploy:
+        - npm run build
+      deploy:
+        provider: surge
+        project: ./build_webpack/
+        domain: IPFSDapp.surge.sh  
+        on:
+          all_branches: true
    # Python mk docs 
     -  language: python
        python:
