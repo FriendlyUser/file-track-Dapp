@@ -1,3 +1,7 @@
+
+const HDWalletProvider = require('truffle-hdwallet-provider')
+require('dotenv').config()
+const mnemonic = process.env.HDWALLET_MNEMONIC
 module.exports = {
   migrations_directory: "./migrations",
   networks: {
