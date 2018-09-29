@@ -29,7 +29,7 @@ contract FileList {
 
    /// @dev Add a file to the list
    /// @param ipfshash an ipfshash returned after an image is finished uploaded
-   /// @param _content bytes32 todo item, this must be short
+   /// @param _filename name of file as a bytes32 as filenames should be short
    /// @param tags array of bytes32 used for sorting/searching files (e,g. blockchain, school, textbook)
    /// @notice updates mappings todos and lastIds
    function addFile(string ipfshash, bytes32 _filename, bytes32[5] tags) public {

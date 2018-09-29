@@ -19,6 +19,7 @@ Images are converted from pdf to png using imagemagick
 convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
 ```
 
+Uses the css framework bulma and font-awesome for icons.
 
 
 ## Installation
@@ -91,4 +92,9 @@ convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
       "source": true // source code uniquely shown for this contract, bytecode still hidden
     }
   }
-``` 
+```
+
+
+## References
+
+* https://github.com/slim12kg/token-zendr-react-interface 

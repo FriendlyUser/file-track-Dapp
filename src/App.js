@@ -4,9 +4,11 @@ import HomeContainer from './layouts/home/HomeContainer'
 
 
 // Styles
-import './css/oswald.css'
+//import './css/oswald.css'
 //import './css/open-sans.css'
-import './css/pure-min.css'
+//import './css/pure-min.css'
+import 'bulma/css/bulma.css'
+
 import './App.css'
 
 class App extends Component {
