@@ -5,7 +5,8 @@ site_author: David Li
 copyright: David Li 2018
 nav:
   - 'Introduction': '/'
-  - 'Contracts':    
+  - 'Contracts':
+      - 'FileList': 'contracts/FileList.md'    
       - 'Migrations': 'contracts/Migrations.md'
       - 'Simple Storage': 'contracts/SimpleStorage.md'
       - 'Complex Storage': 'contracts/ComplexStorage.md'
