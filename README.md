@@ -5,6 +5,7 @@
 
 Simple Dapp that can track files uploaded to IPFS.
 
+Available at IPFSDapp.surge.sh
 
 ![Dapp Architecture](docs/dapp-arch.png)
 

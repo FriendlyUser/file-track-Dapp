@@ -56,7 +56,7 @@ matrix:
         - npm run build
       deploy:
         provider: surge
-        project: ./build_webpack/
+        project:  build_webpack
         domain: IPFSDapp.surge.sh  
         on:
           all_branches: true
