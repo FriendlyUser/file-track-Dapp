@@ -24,7 +24,15 @@ matrix:
         - npm install 
         # Fix tests later 
         - npm run test 
-       
+      before_deploy:
+        - npm run build
+      deploy:
+        provider: surge
+        project: ./build_webpack/
+        domain: IPFSDapp.surge.sh  
+        on:
+          all_branches: true
+          
    # Deploying doxity, doesn't work lol
     - language: node_js
       node_js:    
@@ -43,23 +51,8 @@ matrix:
         - doxity compile
         - doxity publish
         - mv -v olddocs/* docs/
-        
-   # Deploy app to surge, without approval like in circleCI, I'm not going to automate migrations
-    - language: node_js
-      node_js:
-        - "8"
-      before_script:
-        - npm install -g truffle
-      script: 
-        - npm install 
-      before_deploy:
-        - npm run build
-      deploy:
-        provider: surge
-        project: ./build_webpack/
-        domain: IPFSDapp.surge.sh  
-        on:
-          all_branches: true
+      allow_failures:
+        - node_js: 8
         
    # Python mk docs 
     -  language: python
