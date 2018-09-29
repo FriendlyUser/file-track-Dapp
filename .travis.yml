@@ -57,6 +57,7 @@ matrix:
       deploy:
         provider: surge
         project:  build_webpack
+        skip-cleanup: true
         domain: IPFSDapp.surge.sh  
         on:
           all_branches: true
