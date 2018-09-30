@@ -8,7 +8,7 @@
         <meta name="author" content="David Li">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Migrations - File Track IPFS Dapp</title>
+        <title>FileList - File Track IPFS Dapp</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -53,12 +53,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contracts <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../FileList/">FileList</a>
+<li class="active">
+    <a href="./">FileList</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Migrations</a>
+<li >
+    <a href="../Migrations/">Migrations</a>
 </li>
                                     
 <li >
@@ -82,18 +82,18 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../FileList/">
+                            <li class="disabled">
+                                <a rel="next" >
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../SimpleStorage/">
+                                <a rel="prev" href="../Migrations/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://github.com/FriendlyUser/file-track-Dapp/edit/master/docs/contracts/Migrations.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                                <a href="https://github.com/FriendlyUser/file-track-Dapp/edit/master/docs/contracts/FileList.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -103,63 +103,122 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#migrations">Migrations</a></li>
-            <li><a href="#constructor">Constructor</a></li>
+        <li class="main active"><a href="#filelist">FileList</a></li>
+            <li><a href="#events">Events</a></li>
             <li><a href="#methods">Methods</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="migrations">Migrations</h1>
-<p><a href="https://github.com/FriendlyUser/file-track-Dapp/tree/master/contracts/Migrations.sol">see the source</a></p>
+<h1 id="filelist">FileList</h1>
+<p><a href="https://github.com/FriendlyUser/file-track-Dapp/tree/master/contracts/FileList.sol">see the source</a></p>
 <blockquote>
 <p>Author: David Li</p>
 </blockquote>
-<p><strong>Execution cost</strong>: less than 20451 gas</p>
-<p><strong>Deployment cost</strong>: less than 114400 gas</p>
-<p><strong>Combined cost</strong>: less than 134851 gas</p>
-<h2 id="constructor">Constructor</h2>
+<p><strong>Execution cost</strong>: less than 399 gas</p>
+<p><strong>Deployment cost</strong>: less than 360000 gas</p>
+<p><strong>Combined cost</strong>: less than 360399 gas</p>
+<h2 id="events">Events</h2>
+<h3 id="fileaddeduint256stringbytes32">fileAdded(uint256,string,bytes32)</h3>
+<p><strong>Execution cost</strong>: No bound available</p>
+<p>Params:</p>
+<ol>
+<li><strong>fileid</strong> <em>of type <code>uint256</code></em></li>
+<li><strong>ipfshash</strong> <em>of type <code>string</code></em></li>
+<li><strong>_filename</strong> <em>of type <code>bytes32</code></em></li>
+</ol>
 <h2 id="methods">Methods</h2>
-<h3 id="last_completed_migration">last_completed_migration()</h3>
-<p><strong>Execution cost</strong>: less than 406 gas</p>
+<h3 id="addfilestringbytes32bytes325">addFile(string,bytes32,bytes32[5])</h3>
+<blockquote>
+<p>updates mappings todos and lastIds</p>
+<p>Add a file to the list</p>
+</blockquote>
+<p><strong>Execution cost</strong>: No bound available</p>
+<p>Params:</p>
+<ol>
+<li>
+<p><strong>ipfshash</strong> <em>of type <code>string</code></em></p>
+<blockquote>
+<p>an ipfshash returned after an image is finished uploaded</p>
+</blockquote>
+</li>
+<li>
+<p><strong>_filename</strong> <em>of type <code>bytes32</code></em></p>
+<blockquote>
+<p>name of file as a bytes32 as filenames should be short</p>
+</blockquote>
+</li>
+<li>
+<p><strong>tags</strong> <em>of type <code>bytes32[5]</code></em></p>
+<blockquote>
+<p>array of bytes32 used for sorting/searching files (e,g. blockchain, school, textbook)</p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h3 id="filesaddressuint256">files(address,uint256)</h3>
+<p><strong>Execution cost</strong>: No bound available</p>
 <p><strong>Attributes</strong>: constant</p>
+<p>Params:</p>
+<ol>
+<li><strong>param_0</strong> <em>of type <code>address</code></em></li>
+<li><strong>param_1</strong> <em>of type <code>uint256</code></em></li>
+</ol>
+<p>Returns:</p>
+<ol>
+<li><strong>id</strong> <em>of type <code>uint256</code></em></li>
+<li><strong>ipfshash</strong> <em>of type <code>string</code></em></li>
+<li><strong>filename</strong> <em>of type <code>bytes32</code></em></li>
+<li><strong>owner</strong> <em>of type <code>address</code></em></li>
+<li><strong>timestamp</strong> <em>of type <code>uint256</code></em></li>
+</ol>
+<hr />
+<h3 id="getfiletagsaddressuint256">getFileTags(address,uint256)</h3>
+<blockquote>
+<p>return the tags for a specific file </p>
+</blockquote>
+<p><strong>Execution cost</strong>: No bound available</p>
+<p><strong>Attributes</strong>: constant</p>
+<p>Params:</p>
+<ol>
+<li>
+<p><strong>owner</strong> <em>of type <code>address</code></em></p>
+<blockquote>
+<p>--- address of person who uploaded the file </p>
+</blockquote>
+</li>
+<li>
+<p><strong>_index</strong> <em>of type <code>uint256</code></em></p>
+<blockquote>
+<p>--- the file desired, (first file uploaded, second , etc ...)</p>
+</blockquote>
+</li>
+</ol>
+<p>Returns:</p>
+<ol>
+<li><strong>output_0</strong> <em>of type <code>bytes32[5]</code></em></li>
+</ol>
+<hr />
+<h3 id="lastidsaddress">lastIds(address)</h3>
+<p><strong>Execution cost</strong>: less than 575 gas</p>
+<p><strong>Attributes</strong>: constant</p>
+<p>Params:</p>
+<ol>
+<li><strong>param_0</strong> <em>of type <code>address</code></em></li>
+</ol>
 <p>Returns:</p>
 <ol>
 <li><strong>output_0</strong> <em>of type <code>uint256</code></em></li>
 </ol>
 <hr />
-<h3 id="owner">owner()</h3>
-<p><strong>Execution cost</strong>: less than 443 gas</p>
+<h3 id="maxamountoffiles">maxAmountOfFiles()</h3>
+<p><strong>Execution cost</strong>: less than 272 gas</p>
 <p><strong>Attributes</strong>: constant</p>
 <p>Returns:</p>
 <ol>
-<li><strong>output_0</strong> <em>of type <code>address</code></em></li>
+<li><strong>output_0</strong> <em>of type <code>uint256</code></em></li>
 </ol>
-<hr />
-<h3 id="setcompleteduint256">setCompleted(uint256)</h3>
-<p><strong>Execution cost</strong>: less than 20444 gas</p>
-<p>Params:</p>
-<ol>
-<li>
-<p><strong>completed</strong> <em>of type <code>uint256</code></em></p>
-<blockquote>
-<p>integer </p>
-</blockquote>
-</li>
-</ol>
-<hr />
-<h3 id="upgradeaddress">upgrade(address)</h3>
-<p><strong>Execution cost</strong>: No bound available</p>
-<p>Params:</p>
-<ol>
-<li>
-<p><strong>new_address</strong> <em>of type <code>address</code></em></p>
-<blockquote>
-<p>Ethereum address for new migration </p>
-</blockquote>
-</li>
-</ol>
-<p><a href="#migrations">Back to the top ↑</a></p></div>
+<p><a href="#filelist">Back to the top ↑</a></p></div>
         </div>
 
         <footer class="col-md-12">
