@@ -36,7 +36,7 @@ class LoadingContainer extends Component {
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="{metamask}" alt="Placeholder image" />
+                  <img src="{metamask}" />
                 </figure>
               </div>
               <div class="media-content">
@@ -46,7 +46,7 @@ class LoadingContainer extends Component {
             </div>
             <div class="content">
               <strong> We can't find any Ethereum accounts! </strong> <p> Please check and make sure Metamask or your browser are pointed at the correct network and your account is unlocked. </p> <a>@bulmaio</a>.
-              <a href="#">#css</a> <a href="#">#responsive</a>
+              {/** <a href="#">#css</a> <a href="#">#responsive</a> */}
               <br />
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
