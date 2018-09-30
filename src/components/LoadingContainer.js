@@ -36,7 +36,7 @@ class LoadingContainer extends Component {
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="{metamask}" alt="Metamask Image"/>
+                  <img src="{metamask}" alt="Metamask" />
                 </figure>
               </div>
               <div class="media-content">
