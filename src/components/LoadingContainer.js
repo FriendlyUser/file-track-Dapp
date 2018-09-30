@@ -36,16 +36,14 @@ class LoadingContainer extends Component {
             <div class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img src="{metamask}" alt="Placeholder image">
+                  <img src="{metamask}" alt="Placeholder image"></img>
                 </figure>
               </div>
               <div class="media-content">
-
                 <p class="title is-4">??</p>
                 <p class="subtitle is-6">We can't find any Ethereum accounts!</p>
               </div>
             </div>
-
             <div class="content">
               We can't find any Ethereum accounts!</strong> Please check and make sure Metamask or your browser are pointed at the correct network and your account is unlocked. <a>@bulmaio</a>.
               <a href="#">#css</a> <a href="#">#responsive</a>
