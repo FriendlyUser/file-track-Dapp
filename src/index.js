@@ -5,7 +5,7 @@ import { DrizzleProvider } from 'drizzle-react'
 
 // Layouts
 import App from './App'
-import { LoadingContainer } from 'drizzle-react-components'
+import { LoadingContainer } from './components/LoadingContainer'
 
 import { history, store } from './store'
 import drizzleOptions from './drizzleOptions'

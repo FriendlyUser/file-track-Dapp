@@ -21,6 +21,11 @@ convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
 
 Uses the css framework bulma and font-awesome for icons.
 
+## TodoList
+
+* Truffle Test 
+* User Registry Contract
+* Basic Front End
 
 ## Installation
 
