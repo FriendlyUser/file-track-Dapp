@@ -1,7 +1,9 @@
 {
   "name": "file-track-ipfs",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "description": "Uses drizzle and truffle to store ipfs hashes in a smart contract",
   "repository": "https://github.com/FriendlyUser/file-track-Dapp",
+  "license" : "Mozilla-Public-License-2.0",
   "devDependencies": {
     "coveralls": "^3.0.2",
     "ganache-cli": "^6.1.6",
