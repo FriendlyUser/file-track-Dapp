@@ -18,6 +18,7 @@ class UploadFileIPFS extends Component {
         super(props)
         this.drizzle = context.drizzle
         this.account = this.props.accounts[0]
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
              ipfsHash: null,
              buffer:'',
@@ -25,7 +26,9 @@ class UploadFileIPFS extends Component {
              transactionHash:'',
              txReceipt: '',
              imageUploading: false,
-             txMSG: ''
+             txMSG: '',
+             tags: '',
+             filename: ''
         }
     }
     
@@ -48,6 +51,7 @@ class UploadFileIPFS extends Component {
             this.setState({buffer});
     }
     onSubmit = async (event) => {
+        console.log(this.drizzle)
         event.preventDefault();
         //bring in user's metamask account address
         //const accounts = await web3.eth.getAccounts();
@@ -66,13 +70,16 @@ class UploadFileIPFS extends Component {
             /** @todo send ipfs hash using drizzle
              *
              */
-            this.drizzle.FileList.methods.setHash(this.state.ipfsHash).send({
+            const DumbShit = ["0x12","0x12","0x12","0x12","0x12"]
+            // Convert filename to bytes32
+            this.drizzle.contracts.FileList.methods.addFile(this.state.ipfsHash,"0x23",DumbShit).send({
                 from: this.account
             })
             .on('transactionHash', transactionHash => { 
                 //console.log('Transaction HASH: ' + transactionHash)
                 //this.setState({imageUploading: false });
                 this.setState({txMSG: 'IPFS-SM'})
+                this.setState{((transactionHash: transactionHash))}
             })
             .on('receipt', receipt => {
                 //console.log(receipt) // contains the new contract address
@@ -80,6 +87,7 @@ class UploadFileIPFS extends Component {
             })
             .on('confirmation', (confirmationNumber, receipt) => { 
                 this.setState({imageUploading: false });
+                //this.setState{((transactionHash: transactionHash))}
             })
             .on('error', error => { 
                 //console.log('Error has Occured: ' + error)
@@ -87,22 +95,79 @@ class UploadFileIPFS extends Component {
             })
         })
     }
+    
+    handleChange(event) {
+      const target = event.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
+
+      this.setState({
+        [name]: value
+      });
+    } 
+
+
+
 
     render() {
-        //console.log(this.props)
+        console.log(this.props)
         return(
             <div class="container">
                 {/*IPFS PAGE*/}
                 <h3> Upload reward picture</h3>
                     <form onSubmit={this.onSubmit}>
-                        <input
-                        type = "file"
-                        onChange = {this.captureFile}
-                        />
-                        <button className="pure-button button-success"
-                            type="submit">
-                            Send
-                        </button>
+                       <div className="field">
+                          <label className="label">Filename</label>
+                          <div className="control has-icons-left has-icons-right">
+                            <input className="input is-success" type="text" placeholder="Enter name of file" name="filename" 
+                                onChange={this.handleChange}
+                            />
+                            <span className="icon is-small is-left">
+                              <i className="fas fa-user"></i>
+                            </span>
+                            <span className="icon is-small is-right">
+                              <i className="fas fa-check"></i>
+                            </span>
+                          </div>
+                          <p className="help is-success">This name is available</p>
+                        </div>
+                        <div className="field">
+                          <label className="label">Tags (Enter comma seperated string)</label>
+                          <div className="control has-icons-left has-icons-right">
+                            <input className="input is-danger" type="text" placeholder="Enter List of Tags" name="tags" 
+                                onChange={this.handleChange}
+                            />
+                            <span className="icon is-small is-left">
+                              <i className="fas fa-envelope"></i>
+                            </span>
+                            <span className="icon is-small is-right">
+                              <i className="fas fa-exclamation-triangle"></i>
+                            </span>
+                                <strong> {this.state.tags} </strong>
+                          </div>
+                          <p className="help is-success">This email is invalid</p>
+                        </div>
+                        <div className="file">
+                          <label className="file-label">
+                            <input className="file-input" type="file" name="resume" onChange = {this.captureFile} />
+                            <span className="file-cta">
+                              <span className="file-icon">
+                                <i className="fas fa-upload"></i>
+                              </span>
+                              <span className="file-label">
+                                Choose a file…
+                              </span>
+                            </span>
+                          </label>
+                        </div>
+                        <div className="field is-grouped">
+                          <div className="control">
+                            <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
+                          </div>
+                          <div className="control">
+                            <button className="button is-text">Cancel</button>
+                          </div>
+                        </div>
                     </form>
                 <hr/>
                 { /**
@@ -124,19 +189,19 @@ class UploadFileIPFS extends Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td className="ethAddress">IPFS Hash stored on Ethereum</td>
+                            <td classNameName="ethAddress">IPFS Hash stored on Ethereum</td>
                             <td> : </td>
-                            <td className="ethAddress">{this.state.ipfsHash}</td>
+                            <td classNameName="ethAddress">{this.state.ipfsHash}</td>
                         </tr>
                         <tr>
                             <td>Ethereum Contract Address</td>
                             <td> : </td>
-                            <td className="ethAddress">{this.state.ethAddress}</td>
+                            <td classNameName="ethAddress">{this.state.ethAddress}</td>
                         </tr>
                         <tr>
-                            <td className="ethAddress">Tx # </td>
+                            <td classNameName="ethAddress">Tx # </td>
                             <td> : </td>
-                            <td className="ethAddress">{this.state.transactionHash}</td>
+                            <td classNameName="ethAddress">{this.state.transactionHash}</td>
                         </tr>
                     </tbody>
                 </table>

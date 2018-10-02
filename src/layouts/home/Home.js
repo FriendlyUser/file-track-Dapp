@@ -31,6 +31,7 @@ class Home extends Component {
         </div>
 
         <div class="container">
+        
           <h2>SimpleStorage</h2>
           <p>This shows a simple ContractData component with no arguments, along with a form to set its value.</p>
           <p><strong>Stored Value</strong>: <ContractData contract="SimpleStorage" method="storedData" /></p>
@@ -56,7 +57,7 @@ class Home extends Component {
 
           <br/><br/>
         </div>
-        <div class="container">
+        <div class="level">
           <div class="level-item has-text-centered">
             <div>
               <p class="heading">Tweets</p>

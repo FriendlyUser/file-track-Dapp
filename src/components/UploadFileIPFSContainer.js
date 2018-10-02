@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import { drizzleConnect } from 'drizzle-react'
 
 import UploadFileIPFS from './UploadFileIPFS'
