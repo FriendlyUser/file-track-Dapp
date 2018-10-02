@@ -53,6 +53,9 @@ matrix:
       script: 
         - npm install
       before_deploy:
+        - wget https://faucet.ropsten.be/donate/0xe2e379daf0e1237612ba870fa730c6b45e553563
+        - ./node_modules/truffle/build/cli.bundled.js compile
+        - ./node_modules/bin/truffle migrate --network ropsten
         - npm run build
       deploy:
         provider: surge
