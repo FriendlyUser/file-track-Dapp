@@ -28,7 +28,11 @@ class UploadFileIPFS extends Component {
              imageUploading: false,
              txMSG: '',
              tags: '',
-             filename: ''
+             filename: '',
+             formErrors: {fileName: '', tags: ''},
+             fileNameValid: false,
+             tagsValid: false,
+             formValid: false
         }
     }
     
@@ -50,14 +54,14 @@ class UploadFileIPFS extends Component {
         //set this buffer-using es6 syntax
             this.setState({buffer});
     }
+    
     onSubmit = async (event) => {
-        console.log(this.drizzle)
         event.preventDefault();
-        //bring in user's metamask account address
-        //const accounts = await web3.eth.getAccounts();
-        //obtain contract address from storehash.js
-        //const ethAddress= this.props.rewardAddress//await storehash.options.address;
-        this.setState({imageUploading: true });
+        
+        const inputtedTags = this.state.tags.split(',')
+        const ipfsFileName = this.drizzle.web3.utils.utf8ToHex(this.state.filename)
+        
+        this.setState({imageUploading: true })
         this.setState({txMSG: 'IPFS-IMAGE'})
         //save document to IPFS,return its hash#, and set hash# to state
         await ipfs.add(this.state.buffer, (err, ipfsHash) => {
@@ -67,19 +71,22 @@ class UploadFileIPFS extends Component {
             // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
             //return the transaction hash from the ethereum contract
             this.setState({txMSG: 'METAMASK'})
-            /** @todo send ipfs hash using drizzle
-             *
-             */
-            const DumbShit = ["0x12","0x12","0x12","0x12","0x12"]
+            
+            // convert inputted tags to string
+            const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
+            console.log(inputtedTags)
+            for (var i = 0; i < ipfsTags; i++)
+                ipfsTags[i] = this.drizzle.web3.utils.utf8ToHex(inputtedTags[i]);
+
             // Convert filename to bytes32
-            this.drizzle.contracts.FileList.methods.addFile(this.state.ipfsHash,"0x23",DumbShit).send({
+            this.drizzle.contracts.FileList.methods.addFile(this.state.ipfsHash,ipfsFileName,ipfsTags).send({
                 from: this.account
             })
             .on('transactionHash', transactionHash => { 
                 //console.log('Transaction HASH: ' + transactionHash)
                 //this.setState({imageUploading: false });
                 this.setState({txMSG: 'IPFS-SM'})
-                this.setState{((transactionHash: transactionHash))}
+                this.setState({transactionHash: transactionHash})
             })
             .on('receipt', receipt => {
                 //console.log(receipt) // contains the new contract address
@@ -102,15 +109,63 @@ class UploadFileIPFS extends Component {
       const name = target.name;
 
       this.setState({
-        [name]: value
-      });
+        [name]: value}, 
+          () => { this.validateField(name, value) });
     } 
+    
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let fileNameValid = this.state.fileNameValid;
+        let tagsValid = this.state.tagsValid;
 
+        switch(fieldName) {
+          case 'filename':
+            fileNameValid = value.length >= 2;
+            fieldValidationErrors.fileName = fileNameValid ? '' : ' is invalid';
+            break;
+          case 'tags':
+            tagsValid = value.length >= 5;
+            fieldValidationErrors.tags = tagsValid ? '': ' is invalid';
+            break;
+          default:
+            break;
+        }
+       this.setState({formErrors: fieldValidationErrors,
+                    fileNameValid: fileNameValid,
+                    tagsValid: tagsValid
+                  }, this.validateForm);
+    }
 
+    validateForm() {
+      this.setState({formValid: this.state.fileValid && this.state.tagsValid});
+    }
+    
+    tagsClassNames() {
+      let names = "input";
+      if (this.state.tagsValid) {
+          names = "input is-success"
+      } 
+      else {
+          names = "input is-danger"
+      }
 
+      return names;
+    }
+    
+    fileClassNames() {
+      let names = "input";
+      if (this.state.fileNameValid) {
+          names = "input is-success"
+      } 
+      else {
+          names = "input is-danger"
+      }
 
+      return names;
+    }
     render() {
-        console.log(this.props)
+        const fileClasses = this.fileClassNames()
+        const tagClasses = this.tagsClassNames()
         return(
             <div class="container">
                 {/*IPFS PAGE*/}
@@ -119,7 +174,7 @@ class UploadFileIPFS extends Component {
                        <div className="field">
                           <label className="label">Filename</label>
                           <div className="control has-icons-left has-icons-right">
-                            <input className="input is-success" type="text" placeholder="Enter name of file" name="filename" 
+                            <input className={fileClasses} type="text" placeholder="Enter name of file" name="filename" 
                                 onChange={this.handleChange}
                             />
                             <span className="icon is-small is-left">
@@ -129,23 +184,33 @@ class UploadFileIPFS extends Component {
                               <i className="fas fa-check"></i>
                             </span>
                           </div>
-                          <p className="help is-success">This name is available</p>
+                          {  this.state.fileNameValid === true
+                                ?
+                                    <p className="help is-success">File name valid</p>
+                                :
+                                    <p className="help is-danger">Enter a longer name</p> 
+                          }
                         </div>
                         <div className="field">
                           <label className="label">Tags (Enter comma seperated string)</label>
                           <div className="control has-icons-left has-icons-right">
-                            <input className="input is-danger" type="text" placeholder="Enter List of Tags" name="tags" 
+                            <input className={tagClasses} type="text" placeholder="Enter List of Tags" name="tags" 
                                 onChange={this.handleChange}
                             />
                             <span className="icon is-small is-left">
-                              <i className="fas fa-envelope"></i>
+                              <i className="fas fa-file"></i>
                             </span>
                             <span className="icon is-small is-right">
                               <i className="fas fa-exclamation-triangle"></i>
                             </span>
                                 <strong> {this.state.tags} </strong>
                           </div>
-                          <p className="help is-success">This email is invalid</p>
+                          {  this.state.tagsValid === true
+                                ?
+                                    <p className="help is-success">Tags are valid</p>
+                                :
+                                    <p className="help is-danger">Proper commas and no spaces please.</p> 
+                          }
                         </div>
                         <div className="file">
                           <label className="file-label">
@@ -160,14 +225,14 @@ class UploadFileIPFS extends Component {
                             </span>
                           </label>
                         </div>
-                        <div className="field is-grouped">
-                          <div className="control">
-                            <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
-                          </div>
-                          <div className="control">
-                            <button className="button is-text">Cancel</button>
-                          </div>
-                        </div>
+                            <div className="field is-grouped">
+                              <div className="control">
+                                <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
+                              </div>
+                              <div className="control">
+                                <button className="button is-text">Cancel</button>
+                              </div>
+                            </div> 
                     </form>
                 <hr/>
                 { /**
@@ -189,19 +254,19 @@ class UploadFileIPFS extends Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td classNameName="ethAddress">IPFS Hash stored on Ethereum</td>
+                            <td className="ethAddress">IPFS Hash stored on Ethereum</td>
                             <td> : </td>
-                            <td classNameName="ethAddress">{this.state.ipfsHash}</td>
+                            <td className="ethAddress">{this.state.ipfsHash}</td>
                         </tr>
                         <tr>
                             <td>Ethereum Contract Address</td>
                             <td> : </td>
-                            <td classNameName="ethAddress">{this.state.ethAddress}</td>
+                            <td className="ethAddress">{this.state.ethAddress}</td>
                         </tr>
                         <tr>
-                            <td classNameName="ethAddress">Tx # </td>
+                            <td className="ethAddress">Tx # </td>
                             <td> : </td>
-                            <td classNameName="ethAddress">{this.state.transactionHash}</td>
+                            <td className="ethAddress">{this.state.transactionHash}</td>
                         </tr>
                     </tbody>
                 </table>

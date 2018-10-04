@@ -16,7 +16,11 @@ Images are converted from pdf to png using imagemagick
 convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
 ```
 
+## Tasks
 
+- [x] Add Form Validation 
+- [ ] Disable buttons conditionally.
+- [ ] Adding tags to smart contract 
 
 ## Installation
 
