@@ -53,7 +53,7 @@ matrix:
       script: 
         - npm install
       before_deploy:
-        - wget https://faucet.ropsten.be/donate/0xe2e379daf0e1237612ba870fa730c6b45e553563
+        - wget https://faucet.ropsten.be/donate/0xe2e379daf0e1237612ba870fa730c6b45e553563 || true
         - ./node_modules/truffle/build/cli.bundled.js compile
         - ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten
         - npm run build

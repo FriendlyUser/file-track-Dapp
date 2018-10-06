@@ -34,6 +34,8 @@ Uses the css framework bulma and font-awesome for icons.
 * Truffle Test 
 * User Registry Contract
 * Basic Front End
+* Design Auth Contract
+* List of Links
 
 ## Installation
 
