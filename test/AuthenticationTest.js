@@ -23,7 +23,6 @@ contract('Authentication', function(accounts) {
     }).then(function(userName) {
       assert.equal(web3.toUtf8(userName), 'coolUser', "The user was not signed up.");
     });
-    });
   });
   
   it("...should destroy the existing user.", function() {
