@@ -31,11 +31,13 @@ Uses the css framework bulma and font-awesome for icons.
 
 ## TodoList
 
-* Truffle Test 
-* User Registry Contract
-* Basic Front End
-* Design Auth Contract
-* List of Links
+- [x] Truffle Test 
+- [x] User Registry Contract
+- [x] Basic Front End
+- [x] Design Auth Contract
+- [ ] Add front-end for authentication
+- [ ] Add component for viewing files for other users
+- [ ] Add component for viewing files for self, use bulma table.
 
 ## Installation
 

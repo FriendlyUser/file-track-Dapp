@@ -14,7 +14,9 @@ contract Authentication {
   event UserDeleted(address indexed _address);
 
   mapping (address => User) private users;
-
+  
+  // public array that contains list of all users that have registered 
+  address[] public allUsers;
   modifier onlyExistingUser {
     // Check if user exists or terminate
 
@@ -54,7 +56,8 @@ contract Authentication {
     {
         users[msg.sender].name = name;
 	    users[msg.sender].created_at = now;
-
+        
+        allUsers.push(msg.sender)
         emit UserCreated(msg.sender,name,now);
         return (users[msg.sender].name);
     }
