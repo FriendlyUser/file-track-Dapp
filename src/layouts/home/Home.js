@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { AccountData, ContractData, ContractForm } from 'drizzle-react-components'
 import logo from '../../logo.png'
-
+import UploadFileIPFS from '../../components/UploadFileIPFS'
 class Home extends Component {
   render() {
     return (
@@ -13,7 +13,9 @@ class Home extends Component {
           <p class="subtitle">
             My first website with <strong>Bulma</strong>!
           </p>
-
+          
+          <h3>IPFS Test</h3>
+          <UploadFileIPFS {... this.props }/>
           <img src={logo} alt="drizzle-logo" />
           <h1>Drizzle Examples</h1>
           <p>Examples of how to get started with Drizzle in various situations.</p>
@@ -29,6 +31,7 @@ class Home extends Component {
         </div>
 
         <div class="container">
+        
           <h2>SimpleStorage</h2>
           <p>This shows a simple ContractData component with no arguments, along with a form to set its value.</p>
           <p><strong>Stored Value</strong>: <ContractData contract="SimpleStorage" method="storedData" /></p>
@@ -54,7 +57,7 @@ class Home extends Component {
 
           <br/><br/>
         </div>
-        <div class="container">
+        <div class="level">
           <div class="level-item has-text-centered">
             <div>
               <p class="heading">Tweets</p>

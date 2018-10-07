@@ -108,3 +108,10 @@ ul li:not(:last-child) {
   background: darkseagreen;
   border: 1px solid darkgreen;
 }
+
+p.ethAddress {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
