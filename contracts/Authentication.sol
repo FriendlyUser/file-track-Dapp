@@ -57,7 +57,7 @@ contract Authentication {
         users[msg.sender].name = name;
 	    users[msg.sender].created_at = now;
         
-        allUsers.push(msg.sender)
+        allUsers.push(msg.sender);
         emit UserCreated(msg.sender,name,now);
         return (users[msg.sender].name);
     }
