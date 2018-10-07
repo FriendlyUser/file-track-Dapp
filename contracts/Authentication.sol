@@ -84,8 +84,9 @@ contract Authentication {
   }
   
   /// @dev destroy existing username 
-  function destroy () public {
-    require(exists(msg.sender));
+  function destroy () 
+  public 
+  onlyExistingUser {
     delete users[msg.sender];
     emit UserDeleted(msg.sender);
   }
