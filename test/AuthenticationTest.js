@@ -18,8 +18,11 @@ contract('Authentication', function(accounts) {
       authenticationInstance = instance
       
       return authenticationInstance.update('coolUser');
+    }).then(function() {
+      return authenticationInstance.login.call();
     }).then(function(userName) {
-      assert.equal(web3.toUtf8(userName), 'coolUser', "The user was not updated.");
+      assert.equal(web3.toUtf8(userName), 'coolUser', "The user was not signed up.");
+    });
     });
   });
   
