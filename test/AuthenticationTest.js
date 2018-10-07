@@ -1,4 +1,4 @@
-var Authentication = artifacts.require("./Authentication.sol");
+const Authentication = artifacts.require("./Authentication.sol");
 
 contract('Authentication', function(accounts) {
 
@@ -13,11 +13,21 @@ contract('Authentication', function(accounts) {
       assert.equal(web3.toUtf8(userName), 'testuser', "The user was not signed up.");
     });
   });
+  it("...should update the existing user.", function() {
+    return Authentication.deployed().then(function(instance) {
+      authenticationInstance = instance
+      
+      return authenticationInstance.update('coolUser');
+    }).then(function(userName) {
+      assert.equal(web3.toUtf8(userName), 'coolUser', "The user was not updated.");
+    });
+  });
+  
   it("...should destroy the existing user.", function() {
     return Authentication.deployed().then(function(instance) {
       authenticationInstance = instance
       
-      return authenticationInstance.destroy.call();
+      return authenticationInstance.destroy();
     }).then(function() {
       // assert.equal(web3.toUtf8(userName), 'testuser', "The user was not signed up.");
     });
