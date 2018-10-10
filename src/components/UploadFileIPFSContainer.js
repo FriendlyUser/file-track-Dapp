@@ -6,7 +6,6 @@ import UploadFileIPFS from './UploadFileIPFS'
 const mapStateToProps = state => {
   return {
     accounts: state.accounts,
-    contracts: state.contracts,
     FileList: state.contracts.FileList,
     drizzleStatus: state.drizzleStatus
   }

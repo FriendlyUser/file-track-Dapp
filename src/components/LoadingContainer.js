@@ -22,8 +22,8 @@ class LoadingContainer extends Component {
           <div className="pure-g">
             <div className="pure-u-1-1">
               <h1>
-                  <span class="icon has-text-warning">
-                    <i class="fas fa-exclamation-triangle"></i>
+                  <span className="icon has-text-warning">
+                    <i className="fas fa-exclamation-triangle"></i>
                   </span>
               </h1>
               <p>This browser has no connection to the Ethereum network. Please use the Chrome/FireFox extension MetaMask, or dedicated Ethereum browsers Mist or Parity.</p>
@@ -96,8 +96,8 @@ class LoadingContainer extends Component {
       <main className="container loading-screen">
         <div className="pure-g">
           <div className="pure-u-1-1"> 
-            <p><span class="icon has-text-info">
-                <i class="fas fa-info-circle"></i>
+            <p><span className="icon has-text-info">
+                <i className="fas fa-info-circle"></i>
               </span>
               Loading dapp...
             </p>

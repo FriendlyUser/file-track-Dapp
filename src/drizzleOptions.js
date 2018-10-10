@@ -2,7 +2,7 @@ import ComplexStorage from './../build/contracts/ComplexStorage.json'
 import SimpleStorage from './../build/contracts/SimpleStorage.json'
 import TutorialToken from './../build/contracts/TutorialToken.json'
 import FileList from './../build/contracts/FileList.json'
-
+import Authentication from './../build/contracts/Authentication.json'
 const drizzleOptions = {
   web3: {
     block: false,
@@ -14,10 +14,12 @@ const drizzleOptions = {
   contracts: [
     ComplexStorage,
     FileList,
+    Authentication,
     SimpleStorage,
     TutorialToken
   ],
   events: {
+    Authentication: ['UserCreated','UserUpdated','UserDeleted'],
     FileList: ['fileAdded'],
     SimpleStorage: ['StorageSet']
   },
