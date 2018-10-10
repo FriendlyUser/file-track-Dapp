@@ -14,6 +14,7 @@ class FileTable extends Component {
         super(props)
         this.drizzle = context.drizzle
         this.contracts = this.props.contracts
+        this.tableTest = []
         this.state = {
             lastIds: 0,
             table: [],
@@ -32,7 +33,7 @@ class FileTable extends Component {
         this.drizzle.contracts.FileList.methods.lastIds(this.fileOwnerAddress).call()
         .then((lastIds) => {
           var i;
-          for (i = 0; i <= lastIds+2; i++) {
+          for (i = 0; i <= lastIds; i++) {
             this.drizzle.contracts.FileList.methods.files(this.fileOwnerAddress,i).call()
             .then((fileItem) => {
               //do other stuff
@@ -40,9 +41,9 @@ class FileTable extends Component {
             });
           }
         })
-        this.setState({
-            table: table
-        })
+        this.tableTest = table
+        console.log(table)
+        console.log(this.tableTest)
         /**this.drizzle.contracts.FileList.methods.files(this.fileOwnerAddress,0).call()
         .then((fileItem) => {
           console.log(fileItem)
@@ -77,10 +78,52 @@ class FileTable extends Component {
     }
 
     render() {
-
+        // See https://menubar.io/reactjs-tables
+        console.log(this.tableTest)
         return(
             <div class="container">
             <h4> Files Table </h4>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><abbr title="Position">Pos</abbr></th>
+                  <th>Team</th>
+                  <th><abbr title="Played">Pld</abbr></th>
+                  <th><abbr title="Won">W</abbr></th>
+                  <th><abbr title="Drawn">D</abbr></th>
+                  <th><abbr title="Lost">L</abbr></th>
+                  <th><abbr title="Goals for">GF</abbr></th>
+                  <th><abbr title="Goals against">GA</abbr></th>
+                  <th><abbr title="Goal difference">GD</abbr></th>
+                  <th><abbr title="Points">Pts</abbr></th>
+                  <th>Qualification or relegation</th>
+                </tr>
+              </thead>
+               <tfoot>
+                <tr>
+                  <th><abbr title="Position">Pos</abbr></th>
+                  <th>Team</th>
+                  <th><abbr title="Played">Pld</abbr></th>
+                  <th><abbr title="Won">W</abbr></th>
+                  <th><abbr title="Drawn">D</abbr></th>
+                  <th><abbr title="Lost">L</abbr></th>
+                  <th><abbr title="Goals for">GF</abbr></th>
+                  <th><abbr title="Goals against">GA</abbr></th>
+                  <th><abbr title="Goal difference">GD</abbr></th>
+                  <th><abbr title="Points">Pts</abbr></th>
+                  <th>Qualification or relegation</th>
+                </tr>
+              </tfoot>
+                <tbody>
+                { 
+                    this.tableTest.map(fileItem => {
+                        <tr>
+                      <td>{fileItem}</td>     
+                        </tr>
+                    })
+                }
+                </tbody>
+             </table>
             </div>  
                 
         )
