@@ -37,46 +37,46 @@ class LoadingContainer extends Component {
     {
       return(
         <main className="container loading-screen">
-          <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
+          <div className="card">
+          <div className="card-content">
+            <div className="media">
+              <div className="media-left">
+                <figure className="image is-48x48">
                   <img src={metamask} alt="Metamask" />
                 </figure>
               </div>
-              <div class="media-content">
-                <p class="title is-4">
-                  <span class="icon has-text-danger">
-                    <i class="fas fa-ban"></i>
+              <div className="media-content">
+                <p className="title is-4">
+                  <span className="icon has-text-danger">
+                    <i className="fas fa-ban"></i>
                   </span>
                 </p>
-                <p class="subtitle is-6">We can't find any Ethereum accounts!</p>
+                <p className="subtitle is-6">We can't find any Ethereum accounts!</p>
               </div>
             </div>
-            <div class="content">
+            <div className="content">
               <strong> We can't find any Ethereum accounts! </strong> <p> Please check and make sure Metamask or your browser are pointed at the correct network and your account is unlocked. </p> <a>@bulmaio</a>. Please download an Ethereum Browser such as Metamask.
               {/** <a href="#">#css</a> <a href="#">#responsive</a> */}
               <br />
               <time datetime="2018-9-9">11:09 PM - 1 September 2018</time>
             </div>
           </div>
-          <footer class="card-footer">
-            <a href="https://metamask.io/" class="card-footer-item">
-                  <span class="icon has-text-info">
-                    <i class="fab fa-ethereum"></i>
+          <footer className="card-footer">
+            <a href="https://metamask.io/" className="card-footer-item">
+                  <span className="icon has-text-info">
+                    <i className="fab fa-ethereum"></i>
                   </span>
                   Get MetaMask
             </a>
-            <a href="https://github.com/FriendlyUser/file-track-Dapp" class="card-footer-item">
-                  <span class="icon has-text-info">
-                    <i class="fab fa-github"></i>
+            <a href="https://github.com/FriendlyUser/file-track-Dapp" className="card-footer-item">
+                  <span className="icon has-text-info">
+                    <i className="fab fa-github"></i>
                   </span>
                   Github
             </a>
-            <a href="https://friendlyuser.github.io/file-track-Dapp/" class="card-footer-item">
-                  <span class="icon has-text-info">
-                    <i class="fas fa-book"></i>
+            <a href="https://friendlyuser.github.io/file-track-Dapp/" className="card-footer-item">
+                  <span className="icon has-text-info">
+                    <i className="fas fa-book"></i>
                   </span>
                   Read Docs
             </a>

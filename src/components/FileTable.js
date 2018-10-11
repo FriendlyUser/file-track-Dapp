@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+//import IpfsTable from './IpfsTable'
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
 
@@ -14,7 +15,7 @@ class FileTable extends Component {
         super(props)
         this.drizzle = context.drizzle
         this.contracts = this.props.contracts
-        this.tableTest = []
+        this.fileArray = []
         this.state = {
             lastIds: 0,
             table: [],
@@ -41,15 +42,30 @@ class FileTable extends Component {
             });
           }
         })
-        this.tableTest = table
+        // consider modification all timestamps (now => unix timestamp)
+        // also modify tags to shorter them to string
+        // so have another function cleanup table and then set this.fileArray
+        this.fileArray = table
         console.log(table)
-        console.log(this.tableTest)
+        console.log(this.fileArray)
         /**this.drizzle.contracts.FileList.methods.files(this.fileOwnerAddress,0).call()
         .then((fileItem) => {
           console.log(fileItem)
           return fileItem
         })
         */
+    }
+    timeConverter(unixTimeStamp) {
+        var a = new Date(unixTimeStamp * 1000)
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        var year = a.getFullYear()
+        var month = months[a.getMonth()]
+        var date = a.getDate()
+        var hour = a.getHours()
+        var min = a.getMinutes()
+        var sec = a.getSeconds()
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec
+        return time
     }
     /**
      * Get number of file for particular user by calling lastids 
@@ -79,10 +95,37 @@ class FileTable extends Component {
 
     render() {
         // See https://menubar.io/reactjs-tables
-        console.log(this.tableTest)
         return(
             <div class="container">
             <h4> Files Table </h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                  <th><abbr title="Tags">Tags</abbr></th>
+                  <th>Ipfs Hash</th>
+                  <th><abbr title="Played">TimeStamp</abbr></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {this.fileArray.map(ipfsRow =>
+                    <tr>
+                        <td>
+                        <div class="tags">
+                          <span class="tag is-success">{ipfsRow[0]}</span>
+                          <span class="tag is-info">{ipfsRow[1]}</span>
+                          <span class="tag is-danger">{ipfsRow[2]}</span>
+                          <span class="tag is-link">{ipfsRow[3]}</span>
+                          <span class="tag is-primary">{ipfsRow[4]}</span>
+                          <span class="tag is-white">{ipfsRow[4]}</span>
+                        </div>
+                        </td>
+                    <td>{ipfsRow.ipfshash}</td>
+                    <td>{ipfsRow.now}</td>
+                    </tr>
+                )}
+                </tbody>
+              </table>
+            <h3> Anime </h3>
             <table class="table">
               <thead>
                 <tr>
@@ -116,11 +159,19 @@ class FileTable extends Component {
               </tfoot>
                 <tbody>
                 { 
-                    this.tableTest.map(fileItem => {
-                        <tr>
-                      <td>{fileItem}</td>     
-                        </tr>
-                    })
+                    <tr>
+                        <td>COol</td>
+                        <td>Test</td>
+                        <td><abbr title="Played">Pld</abbr></td>
+                        <td><abbr title="Won">W</abbr></td>
+                        <td><abbr title="Drawn">D</abbr></td>
+                        <td><abbr title="Lost">L</abbr></td>
+                        <td><abbr title="Goals for">GF</abbr></td>
+                        <td><abbr title="Goals against">GA</abbr></td>
+                        <td><abbr title="Goal difference">GD</abbr></td>
+                        <td><abbr title="Points">Pts</abbr></td>
+                        <td>Qualification or relegation</td>
+                    </tr>
                 }
                 </tbody>
              </table>
