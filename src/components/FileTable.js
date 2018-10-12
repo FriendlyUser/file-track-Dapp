@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { IPFSURL } from '../util/constants'
 //import IpfsTable from './IpfsTable'
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
@@ -23,31 +24,48 @@ class FileTable extends Component {
         }
     }
     componentDidMount() {
-        this.drizzle.contracts.FileList.methods.lastIds(this.fileOwnerAddress).call()
+        this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
           this.setState({
              lastIds: lastIds
           });
         })
-        console.log(this.state.lastIds)
         var table = []
-        this.drizzle.contracts.FileList.methods.lastIds(this.fileOwnerAddress).call()
+        // looks like an struct within an array can't be stored so easily
+        // var tags = []
+        this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
-          var i;
-          for (i = 0; i <= lastIds; i++) {
-            this.drizzle.contracts.FileList.methods.files(this.fileOwnerAddress,i).call()
-            .then((fileItem) => {
-              //do other stuff
-              table.push(fileItem)
-            });
-          }
+           for (var i = 0; i < lastIds; i++) {
+             this.drizzle.contracts.FileList.methods.files(this.state.fileOwnerAddress,i).call()
+             .then((fileItem) => {
+               // add file item to table, missing tags
+               fileItem.filename = this.drizzle.web3.utils.hexToUtf8(fileItem.filename)
+               fileItem.timestamp = this.timeConverter(fileItem.timestamp)
+               table.push(fileItem)
+               /** Can't return bytes from struct array.
+               this.drizzle.contracts.FileList.methods.getFileTags("0xE2e379daF0E1237612ba870fA730c6B45e553563",2).call()
+               .then((tags) => {
+                  console.log(tags)
+                  // convert all non 0 bytes tag fields to hex
+                  for (var j=0; j < 5; j++) {
+                    if (tags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
+                      console.log(tags[j])
+                      tags[j] = this.drizzle.web3.utils.hexToAscii(tags[j])
+                    } else {
+                      console.log(tags[j])
+                      tags[j] = 'N/A'
+                    }
+                  }                  
+               });
+               */
+             });
+           }
         })
         // consider modification all timestamps (now => unix timestamp)
         // also modify tags to shorter them to string
         // so have another function cleanup table and then set this.fileArray
+
         this.fileArray = table
-        console.log(table)
-        console.log(this.fileArray)
         /**this.drizzle.contracts.FileList.methods.files(this.fileOwnerAddress,0).call()
         .then((fileItem) => {
           console.log(fileItem)
@@ -101,14 +119,17 @@ class FileTable extends Component {
               <table class="table">
                 <thead>
                   <tr>
-                  <th><abbr title="Tags">Tags</abbr></th>
+                  <th>FileName</th>
+                  <th>Owner </th>
                   <th>Ipfs Hash</th>
                   <th><abbr title="Played">TimeStamp</abbr></th>
                   </tr>
                 </thead>
                 <tbody>
-                {this.fileArray.map(ipfsRow =>
+                {this.fileArray !== undefined &&
+                 this.fileArray.map(ipfsRow =>
                     <tr>
+                    {/** Tags (bytes32 array) can't be returned from strucuts
                         <td>
                         <div class="tags">
                           <span class="tag is-success">{ipfsRow[0]}</span>
@@ -119,8 +140,11 @@ class FileTable extends Component {
                           <span class="tag is-white">{ipfsRow[4]}</span>
                         </div>
                         </td>
-                    <td>{ipfsRow.ipfshash}</td>
-                    <td>{ipfsRow.now}</td>
+                    */}
+                    <td>{ipfsRow.filename}</td>
+                    <td>{ipfsRow.owner}</td>
+                    <td><a href={IPFSURL+ipfsRow.ipfshash} target="_blank">{ipfsRow.ipfshash}</a></td>
+                    <td>{ipfsRow.timestamp}</td>
                     </tr>
                 )}
                 </tbody>

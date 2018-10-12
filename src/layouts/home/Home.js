@@ -31,7 +31,7 @@ class Home extends Component {
           <br/>
           
           <h4>Files Table</h4>
-          <FileTable fileOwnerAddress = {this.props.accounts[0]} {... this.props} />
+          <FileTable fileOwnerAddress ={this.props.accounts[0]} {... this.props} />
           <img src={logo} alt="drizzle-logo" />
           
           <h1>Dapp Built with drizzle</h1>
