@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { drizzleConnect } from 'drizzle-react'
 import PropTypes from 'prop-types'
 
 import { IPFSURL } from '../util/constants'
+import EthAddress from './EthAddress.js';
+
 //import IpfsTable from './IpfsTable'
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
@@ -14,8 +17,11 @@ class FileTable extends Component {
      */
     constructor(props, context) {
         super(props)
+        console.log(this.props)
         this.drizzle = context.drizzle
+        this.web3 = this.props.web3
         this.contracts = this.props.contracts
+        this.fileListAddress = this.drizzle.contracts.FileList.methods
         this.fileArray = []
         this.state = {
             lastIds: 0,
@@ -112,6 +118,7 @@ class FileTable extends Component {
     }
 
     render() {
+        console.log(this.drizzle)
         // See https://menubar.io/reactjs-tables
         return(
             <div class="container">
@@ -142,13 +149,23 @@ class FileTable extends Component {
                         </td>
                     */}
                     <td>{ipfsRow.filename}</td>
-                    <td>{ipfsRow.owner}</td>
-                    <td><a href={IPFSURL+ipfsRow.ipfshash} target="_blank">{ipfsRow.ipfshash}</a></td>
+                    <td>
+                        <EthAddress
+                            address = {ipfsRow.owner}
+                            networkId = {this.props.web3.networkId === undefined ? 1 : this.props.web3.networkId}
+                            copyToClipboard
+                        />
+                        
+                    </td>
+                    <td><a href={IPFSURL+ipfsRow.ipfshash} target="_blank">
+                        View File </a>
+                    </td>
                     <td>{ipfsRow.timestamp}</td>
                     </tr>
                 )}
                 </tbody>
               </table>
+            {/**
             <h3> Anime </h3>
             <table class="table">
               <thead>
@@ -199,6 +216,7 @@ class FileTable extends Component {
                 }
                 </tbody>
              </table>
+            */}
             </div>  
                 
         )
@@ -213,5 +231,15 @@ FileTable.propTypes = {
     fileOwnerAddress: PropTypes.string
 }
 
+// Container model makes web3 not load properly.
+const mapStateToProps = state => {
+  return {
+    accounts: state.accounts,
+    contracts: state.contracts,
+    drizzleStatus: state.drizzleStatus,
+    FileList: state.contracts.FileList,
+    web3: state.web3
+  }
+}
 
-export default FileTable
+export default drizzleConnect(FileTable, mapStateToProps);

@@ -35,6 +35,8 @@ contract FileList {
    function addFile(string ipfshash, bytes32 _filename, bytes32[5] tags) public {
  
       File memory myFile = File(lastIds[msg.sender], ipfshash, _filename, tags,  msg.sender, now);
+      // explicitly store tags
+      myFile.tags = tags;
       // store new file in mapping
 
       files[msg.sender][lastIds[msg.sender]] = myFile;

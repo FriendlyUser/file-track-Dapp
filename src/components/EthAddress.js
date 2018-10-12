@@ -2,7 +2,9 @@ import React from 'react';
 import { bool, number, string } from 'prop-types';
 import copy from 'copy-to-clipboard';
 import CopyIcon from './CopyIcon';
+import { NETWORKS } from '../util/constants'
 import { isAddress } from '../util/util';
+
 import '../css/ethAddress.css';
 
 class EthAddress extends React.Component {
@@ -13,6 +15,8 @@ class EthAddress extends React.Component {
     compact: bool,
     // number of visible characters for compact mode
     visibleCharacters: number,
+    //web3 network ID
+    networkId: number,
     // enable or disable the ability to copy to clipboard
     copyToClipboard: bool,
     // make a link to etherscan
@@ -24,7 +28,8 @@ class EthAddress extends React.Component {
   static defaultProps = {
     compact: true,
     visibleCharacters: 8,
-    copyToClipboard: true,
+    ethNetwork: 1,
+    copyToClipboard: false,
     etherscan: false,
     className: '',
   };
@@ -67,6 +72,7 @@ class EthAddress extends React.Component {
       etherscan,
       compact,
       visibleCharacters,
+      networkId,
       copyToClipboard,
       className,
     } = this.props;
@@ -93,12 +99,17 @@ class EthAddress extends React.Component {
         </span>
       );
     }
-
+    console.log(networkId)
+    const currentNetwork = NETWORKS[networkId].toLowerCase()   
+    
+    // This is the etherscanURL for a user/contract
+    const etherscanURL = currentNetwork === 1 ? "https://etherscan.io/address/" : "https://" + currentNetwork  + ".etherscan.io/address/"
+    
     const classes = `eth-address ${className} ${copyToClipboard ? 'copy-enabled' : ''} ${showingCopied ? 'showing-copied' : ''}`;
     
     return etherscan ? (
       <a
-        href={`https://etherscan.io/search?q=${address}`}
+        href={etherscanURL + address}
         target="_blank"
         className={classes}
         title={address}

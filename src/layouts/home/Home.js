@@ -29,13 +29,8 @@ class Home extends Component {
           <AccountData accountIndex="0" units="ether" precision="3" />
 
           <br/>
-          
-          <h4>Files Table</h4>
+ 
           <FileTable fileOwnerAddress ={this.props.accounts[0]} {... this.props} />
-          <img src={logo} alt="drizzle-logo" />
-          
-          <h1>Dapp Built with drizzle</h1>
-          <p>Examples of how to get started with Drizzle in various situations.</p>
         </div>
   
         {/**

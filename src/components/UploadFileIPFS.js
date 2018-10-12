@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { drizzleConnect } from 'drizzle-react'
 import PropTypes from 'prop-types'
+import EthAddress from './EthAddress.js';
+
 //import { drizzleConnect } from 'drizzle-react'
 //import { ContractData } from 'drizzle-react-components'
 
@@ -19,6 +22,7 @@ class UploadFileIPFS extends Component {
         this.drizzle = context.drizzle
         this.account = this.props.accounts[0]
         this.handleChange = this.handleChange.bind(this);
+        this.fileListAddress = this.drizzle.contracts.FileList.address
         this.state = {
              ipfsHash: null,
              buffer:'',
@@ -169,7 +173,7 @@ class UploadFileIPFS extends Component {
         return(
             <div class="container">
                 {/*IPFS PAGE*/}
-                <h3> Upload reward picture</h3>
+                <h3> Upload Document to IPFS</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="field">
                         <label className="label">Filename</label>
@@ -270,6 +274,12 @@ class UploadFileIPFS extends Component {
                         </tr>
                     </tbody>
                 </table>
+                
+                <EthAddress 
+                   address = {this.fileListAddress}
+                   networkId = {this.props.web3.networkId}
+                   etherscan
+                />
             </div>
         )
     }
@@ -280,4 +290,13 @@ UploadFileIPFS.contextTypes = {
  }
 
 
-export default UploadFileIPFS
+const mapStateToProps = state => {
+  return {
+    accounts: state.accounts,
+    drizzleStatus: state.drizzleStatus,
+    FileList: state.contracts.FileList,
+    web3: state.web3
+  }
+}
+
+export default drizzleConnect(UploadFileIPFS, mapStateToProps);
