@@ -79,6 +79,8 @@ matrix:
          - ls 
          #- mv docs/ site/
        deploy:
+         edge:
+           branch: v1.8.47
          provider: pages
          skip-cleanup: true
          local_dir: site
