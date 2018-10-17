@@ -32,15 +32,15 @@ contract('FileList', function(accounts) {
             console.log("      adding File Items")
             const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
             console.log(ipfsTags)
-            //for (var i = 0; i < ipfsTags; i++)
-            //    ipfsTags[i] = web3.utils.fromUtf8(tags[i]);
+            for (var i = 0; i < ipfsTags; i++)
+                ipfsTags[i] = web3.fromUtf8(tags[i]);
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
             const filename1 = web3.fromUtf8("test1")
             // convert filenames to hex later 
-            await myFileListInstance.addFile(hash1,filename1,tags)
+            await myFileListInstance.addFile(hash1,filename1,ipfsTags)
             const hash2 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
             const filename2 =  web3.fromUtf8("test2")
-            await myFileListInstance.addFile(hash2,filename2,tags)
+            await myFileListInstance.addFile(hash2,filename2,ipfsTags)
         });
         it("......Getting Number of Files",async() => {
             console.log("      getting number of Files")
@@ -49,6 +49,7 @@ contract('FileList', function(accounts) {
         })
         it("......Getting list of tags", async() => {
             const returnedTags = await myFileListInstance.getFileTags(owner,0)
+            console.log(returnedTags)
             for (var j=0; j < 5; j++) {
                 if (returnedTags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
                   console.log(tags[j])
