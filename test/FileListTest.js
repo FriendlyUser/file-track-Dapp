@@ -32,7 +32,7 @@ contract('FileList', function(accounts) {
             console.log("      adding File Items")
             const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
             console.log(ipfsTags)
-            for (var i = 0; i < ipfsTags; i++)
+            for (var i = 0; i < ipfsTags.length; i++)
                 ipfsTags[i] = web3.fromAscii(tags[i]);
                 console.log(web3.fromAscii(tags[i]))
             console.log(ipfsTags)
