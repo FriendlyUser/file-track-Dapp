@@ -31,7 +31,7 @@ contract('FileList', function(accounts) {
         it("......Adding a File Item", async() =>  {
             console.log("      adding File Items")
             const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
-            console.log(inputtedTags)
+            console.log(ipfsTags)
             for (var i = 0; i < ipfsTags; i++)
                 ipfsTags[i] = web3.utils.utf8ToHex(tags[i]);
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
@@ -48,7 +48,7 @@ contract('FileList', function(accounts) {
             assert.strictEqual(2,lastIds.toNumber())
         })
         it("......Getting list of tags", async() => {
-            const returnedTags = await myFileListInstance.getTags(owner,0)
+            const returnedTags = await myFileListInstance.getFileTags(owner,0)
             for (var j=0; j < 5; j++) {
                 if (returnedTags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
                   console.log(tags[j])
