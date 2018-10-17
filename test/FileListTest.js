@@ -30,12 +30,12 @@ contract('FileList', function(accounts) {
         //console.log('Cool')
         it("......Adding a File Item", async() =>  {
             console.log("      adding File Items")
-            const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
+            const ipfsTags = ["0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000"]
             console.log(ipfsTags)
-            for (var i = 0; i < ipfsTags.length; i++)
-                ipfsTags[i] = web3.utils.fromAscii(tags[i]);
-                console.log(web3.utils.fromAscii(tags[i]))
-            console.log(ipfsTags)
+            //for (var i = 0; i < ipfsTags.length; i++)
+            //    ipfsTags[i] = web3..fromAscii(tags[i]);
+            //    console.log(web3..fromAscii(tags[i]))
+            //console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
             const filename1 = web3.utils.fromAscii("test1")
             // convert filenames to hex later 
@@ -61,7 +61,7 @@ contract('FileList', function(accounts) {
                   returnedTags[j] = 'N/A'
                 }
             }
-            assert.strictEqual(returnedTags[0],tags[0])
+            assert.strictEqual(returnedTags[0],"hello")
         })
         /*
         it("Getting Data of all todos",async() => {
