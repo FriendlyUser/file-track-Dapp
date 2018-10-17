@@ -33,14 +33,15 @@ contract('FileList', function(accounts) {
             const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
             console.log(ipfsTags)
             for (var i = 0; i < ipfsTags; i++)
-                ipfsTags[i] = web3.fromUtf8(tags[i]);
+                ipfsTags[i] = web3.utf8ToHex(tags[i]);
+                consolelog(web3.utf8ToHex(tags[i]))
             console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename1 = web3.fromUtf8("test1")
+            const filename1 = web3.utf8ToHex("test1")
             // convert filenames to hex later 
             await myFileListInstance.addFile(hash1,filename1,ipfsTags)
             const hash2 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename2 =  web3.fromUtf8("test2")
+            const filename2 =  web3.utf8ToHex("test2")
             await myFileListInstance.addFile(hash2,filename2,ipfsTags)
         });
         it("......Getting Number of Files",async() => {
