@@ -34,7 +34,7 @@ contract('FileList', function(accounts) {
             console.log(ipfsTags)
             for (var i = 0; i < ipfsTags; i++)
                 ipfsTags[i] = web3.utf8ToHex(tags[i]);
-                consolelog(web3.utf8ToHex(tags[i]))
+                console.log(web3.utf8ToHex(tags[i]))
             console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
             const filename1 = web3.utf8ToHex("test1")
