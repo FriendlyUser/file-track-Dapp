@@ -28,6 +28,8 @@ contract('FileList', function(accounts) {
     });
     describe("...Add File", async() => {
         //console.log('Cool')
+        // https://ethereum.stackexchange.com/questions/23058/how-to-convert-string-to-bytes32-in-web3js
+        // https://stackoverflow.com/questions/46491123/string-parameter-not-automatically-parsing-into-bytes32-when-used-with-form/46491305
         it("......Adding a File Item", async() =>  {
             console.log("      adding File Items")
             const ipfsTags = ["0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000"]
@@ -35,7 +37,7 @@ contract('FileList', function(accounts) {
             //for (var i = 0; i < ipfsTags.length; i++)
             //    ipfsTags[i] = web3..fromAscii(tags[i]);
             //    console.log(web3..fromAscii(tags[i]))
-            //console.log(ipfsTags)
+            //    console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
             const filename1 = web3.utils.fromAscii("test1")
             // convert filenames to hex later 
