@@ -26,6 +26,7 @@ contract FileList {
    
    /// @dev main event for smart contract, needed for drizzle to update list of files
    event fileAdded (uint256 fileid, string ipfshash, bytes32 _filename);
+   event tagsAdded (bytes32[5] tags)
 
    /// @dev Add a file to the list
    /// @param ipfshash an ipfshash returned after an image is finished uploaded
@@ -37,6 +38,7 @@ contract FileList {
       File memory myFile = File(lastIds[msg.sender], ipfshash, _filename, tags,  msg.sender, now);
       // explicitly store tags
       myFile.tags = tags;
+      emit tagsAdded (myFile.tags);
       // store new file in mapping
 
       files[msg.sender][lastIds[msg.sender]] = myFile;
