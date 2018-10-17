@@ -23,10 +23,11 @@ contract FileList {
    mapping(address => File[maxAmountOfFiles]) public files;
    // Owner => last files id
    mapping(address => uint256) public lastIds;
+   // consider mapping hash to set of tags
    
    /// @dev main event for smart contract, needed for drizzle to update list of files
    event fileAdded (uint256 fileid, string ipfshash, bytes32 _filename);
-   event tagsAdded (bytes32[5] tags)
+   event tagsAdded (bytes32[5] tags);
 
    /// @dev Add a file to the list
    /// @param ipfshash an ipfshash returned after an image is finished uploaded
