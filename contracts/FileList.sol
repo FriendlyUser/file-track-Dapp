@@ -40,6 +40,7 @@ contract FileList {
       // explicitly store tags
       
       myFile.tags = tags;
+      // baka
       emit tagsAdded (myFile.tags);
       // store new file in mapping
 
