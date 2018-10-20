@@ -39,11 +39,11 @@ contract('FileList', function(accounts) {
             //    console.log(web3..fromAscii(tags[i]))
             //    console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename1 = web3.utils.fromAscii("test1")
+            const filename1 = web3.fromAscii("test1")
             // convert filenames to hex later 
             await myFileListInstance.addFile(hash1,filename1,ipfsTags)
             const hash2 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename2 =  web3.utils.fromAscii("test2")
+            const filename2 =  web3.fromAscii("test2")
             await myFileListInstance.addFile(hash2,filename2,ipfsTags)
         });
         it("......Getting Number of Files",async() => {
