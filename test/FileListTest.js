@@ -63,7 +63,7 @@ contract('FileList', function(accounts) {
                   returnedTags[j] = 'N/A'
                 }
             }
-            assert.strictEqual(returnedTags[0],"hello")
+            assert.strictEqual(returnedTags[0],"N/A")
         })
         /*
         it("Getting Data of all todos",async() => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
+import { Route, Switch } from 'react-router'
 import HomeContainer from './layouts/home/HomeContainer'
+import DashboardContainer from './layouts/dashboard/DashboardContainer'
 import NavContainer from './components/NavContainer'
 import 'bulma/css/bulma.css'
 
@@ -12,8 +13,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-            <NavContainer />
-            <Route exact path="/" component={HomeContainer}/>
+         <NavContainer />
+         <Route exact path="/" component={HomeContainer}/>
       </div>
     );
   }
