@@ -5,9 +5,11 @@ import UploadFileIPFS from '../../components/UploadFileIPFS'
 
 import FileTable from '../../components/FileTable'
 import LoginForm from '../../components/LoginForm'
+import ErrorBoundary from '../../components/ErrorBoundary'
 class Home extends Component {
   render() {
     return (
+    <ErrorBoundary>
       <section class="section">
         <div class="container">
           <h1 class="title">
@@ -61,6 +63,7 @@ class Home extends Component {
           </div>
         */}
       </section>
+    </ErrorBoundary>
     )
   }
 }
