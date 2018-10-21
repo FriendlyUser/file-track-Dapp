@@ -10,12 +10,12 @@ class Home extends Component {
   render() {
     return (
     <ErrorBoundary>
-      <section class="section">
-        <div class="container">
-          <h1 class="title">
+      <section className="section">
+        <div className="container">
+          <h1 className="title">
             Getting started
           </h1>
-          <p class="subtitle">
+          <p className="subtitle">
            File out Form and upload an image to decentralized <strong>IPFS</strong>!
           </p>
           <LoginForm {... this.props } />
@@ -26,7 +26,7 @@ class Home extends Component {
           <br/><br/>
         </div>
 
-        <div class="container">
+        <div className="container">
           <h2>Active Account</h2>
           <AccountData accountIndex="0" units="ether" precision="3" />
 

@@ -65,13 +65,20 @@ class LoginForm extends Component {
         let user   = ''
         // Check that the contract is actually initialized
         if(this.drizzle.contracts.Authentication 
+            && this.props.contracts.Authentication
             && this.props.contracts.Authentication.initialized
         ){
             const userKey = this.drizzle.contracts.Authentication.methods.login.cacheCall()
             // Check that the data is cached
             if(this.props.contracts.Authentication.login[userKey]
             ){
-                user = this.drizzle.web3.utils.hexToUtf8(this.props.contracts.Authentication.login[userKey].value)
+                // check to make sure has created an account 
+                if(this.props.contracts.Authentication.login[userKey].value === undefined) {
+                    user = ''
+                }
+                else {
+                    user = this.drizzle.web3.utils.hexToUtf8(this.props.contracts.Authentication.login[userKey].value)   
+                }
             }
         }
         return(

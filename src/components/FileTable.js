@@ -123,14 +123,14 @@ class FileTable extends Component {
         // See https://menubar.io/reactjs-tables
         return(
             <div class="container">
-            <h4> Files Table </h4>
+            <h2> Files Table </h2>
               <table class="table">
                 <thead>
                   <tr>
-                  <th>FileName</th>
-                  <th>Owner </th>
-                  <th>Ipfs Hash</th>
-                  <th><abbr title="Played">TimeStamp</abbr></th>
+                  <th><i className="fas fa-file"></i> FileName</th>
+                  <th><i className="fas fa-user"></i> Owner </th>
+                  <th><abbr title="Unique Identifier on the interplanetery file system"> <i className="fas fa-hashtag"></i> Ipfs Hash </abbr> </th>
+                  <th><abbr title="Unix Timestamp"> <i className="fas fa-clock"></i>  TimeStamp</abbr></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@ class FileTable extends Component {
                         </div>
                         </td>
                     */}
-                    <td>{ipfsRow.filename}</td>
+                    <td key={ipfsRow.filename}>{ipfsRow.filename}</td>
                     <td>
                         <EthAddress
                             address = {ipfsRow.owner}
