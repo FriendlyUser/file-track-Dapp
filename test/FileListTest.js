@@ -6,7 +6,6 @@ contract('FileList', function(accounts) {
     let owner    = accounts[0];
     let nonOwner = accounts[1];
     const username = "grandfleet"
-    const tags = ["blockchain","ENGR001","games","life","anime"]
     //let tryCatch = require("./helpers/exceptions.js").tryCatch;
     //let errTypes = require("./helpers/exceptions.js").errTypes;
     beforeEach(async () => {
@@ -32,10 +31,12 @@ contract('FileList', function(accounts) {
         // https://stackoverflow.com/questions/46491123/string-parameter-not-automatically-parsing-into-bytes32-when-used-with-form/46491305
         it("......Adding a File Item", async() =>  {
             console.log("      adding File Items")
+            const tags = ["blockchain","ENGR001","games","life","anime"]
             const ipfsTags = ["0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000"]
             console.log(ipfsTags)
-            //for (var i = 0; i < ipfsTags.length; i++)
-            //    ipfsTags[i] = web3..fromAscii(tags[i]);
+            for (var i = 0; i < ipfsTags.length; i++) {
+                ipfsTags[i] = web3.fromAscii(tags[i])
+            }
             //    console.log(web3..fromAscii(tags[i]))
             //    console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
