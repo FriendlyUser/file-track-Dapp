@@ -62,9 +62,7 @@ contract('FileList', function(accounts) {
                   console.log(returnedTags[j])
                   returnedTags[j] = web3.toUtf8(returnedTags[j])
                   console.log('The returned tags are: null???')
-                  console.log(returnedTags[j])
                 } else {
-                  console.log(returnedTags[j])
                   returnedTags[j] = 'N/A'
                 }
             }
