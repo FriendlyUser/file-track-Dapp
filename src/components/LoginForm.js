@@ -64,7 +64,7 @@ class LoginForm extends Component {
 
         let user   = ''
         // Check that the contract is actually initialized
-        if(this.drizzle.contracts.Authentication !== undefined
+        if(this.drizzle.contracts.Authentication 
             && this.props.contracts.Authentication
             && this.props.contracts.Authentication.initialized
         ){
@@ -72,11 +72,17 @@ class LoginForm extends Component {
             // Check that the data is cached
             if(this.props.contracts.Authentication.login[userKey]
             ){
-                user = this.drizzle.web3.utils.hexToUtf8(this.props.contracts.Authentication.login[userKey].value)
+                // check to make sure has created an account 
+                if(this.props.contracts.Authentication.login[userKey].value === undefined) {
+                    user = ''
+                }
+                else {
+                    user = this.drizzle.web3.utils.hexToUtf8(this.props.contracts.Authentication.login[userKey].value)   
+                }
             }
         }
         return(
-            <div class="container">
+            <div className="container">
                 {/*IPFS PAGE*/}
                 { user === '' 
                 ? 
@@ -100,7 +106,6 @@ class LoginForm extends Component {
                             </div>
                         </div> 
                     </form>
-                    <hr/>  
                     </div>
                 :
                     <div>

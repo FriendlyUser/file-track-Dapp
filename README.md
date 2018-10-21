@@ -5,8 +5,10 @@
 
 Simple Dapp that can track files uploaded to IPFS.
 
-Available at IPFSDapp.surge.sh
+Available at http://IPFSDapp.surge.sh
 
+![Screenshot](docs/ipfs-dapp-screenshot.png)
+Built using standard truffle and solidity.
 ![Dapp Architecture](docs/dapp-arch.png)
 
 Upload and track IPFS files securely on the Ethereum Network, supports UPORT
@@ -25,7 +27,7 @@ Uses the css framework bulma and font-awesome for icons.
 |Filename                | IPFS Hash| url |
 | ---| ---| ---| 
 | ENGR001 Report   | QmSE4qrynVfCU1Vevhvaeav6RWtN5vFKSn3KaC3GuSKPvq | [ENGR001](https://gateway.ipfs.io/ipfs/QmSE4qrynVfCU1Vevhvaeav6RWtN5vFKSn3KaC3GuSKPvq) |
-| ENGR002 Report  |fill in | fillin |
+| ENGR002 Report  |QmezncgKe3NEMyN9mmitT3BLwLE3adCNyNDUSJssgCqGXb | [ENGR002](https://ipfs.io/ipfs/QmezncgKe3NEMyN9mmitT3BLwLE3adCNyNDUSJssgCqGXb) |
 | ENGR003 Report  | QmZb7crH2YYqwvq5d2pCjZxAovzqXkhWwnEE993UM4jikk | [ENGR003](https://gateway.ipfs.io/ipfs/QmZb7crH2YYqwvq5d2pCjZxAovzqXkhWwnEE993UM4jikk) |
 | ENGR446 Report  | QmeQegoUZ3YMNpgUvinU424FtrMUYNNHgQafmaThrzG9nZ |[ENGR446](https://ipfs.io/ipfs/QmeQegoUZ3YMNpgUvinU424FtrMUYNNHgQafmaThrzG9nZ) |
 
@@ -35,9 +37,10 @@ Uses the css framework bulma and font-awesome for icons.
 - [x] User Registry Contract
 - [x] Basic Front End
 - [x] Design Auth Contract
-- [ ] Add front-end for authentication
+- [x] Add front-end for authentication
+- [x] Add component for viewing files for self, use bulma table.
+- [x] Boilerplate for Front-end testing
 - [ ] Add component for viewing files for other users
-- [ ] Add component for viewing files for self, use bulma table.
 - [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
 ## Installation

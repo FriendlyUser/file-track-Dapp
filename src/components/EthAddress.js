@@ -99,7 +99,6 @@ class EthAddress extends React.Component {
         </span>
       );
     }
-    console.log(networkId)
     const currentNetwork = NETWORKS[networkId].toLowerCase()   
     
     // This is the etherscanURL for a user/contract

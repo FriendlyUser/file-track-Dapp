@@ -10,30 +10,44 @@ const Nav = props => (
             <a className="navbar-item" href="/">
                 <strong><i className="fas fa-coins"></i> {props.appName}</strong>
             </a>
-            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarIPFS">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-        <div className="navbar-menu">
-            <div className="navbar-end">
+        <div id="navbarIPFS" className="navbar-menu">
+            <div className="navbar-start">
                <a className="navbar-item" href="https://github.com/FriendlyUser/file-track-Dapp">
                  <strong>Github</strong>
                </a>
                <a className="navbar-item" href="https://friendlyuser.github.io/file-track-Dapp/">
                  <strong>Docs</strong>
                </a>
+            </div>
+            <div className="navbar-end">
                 <a className="navbar-item">
-                    <div className="tags has-addons">
-                        <span className="tag">
-                            <i className="fas fa-signal"></i> &nbsp; Network
-                        </span>
-                        <span className="tag is-danger">{NETWORKS[props.networkId] || props.networkId }</span>
-                    </div>
+                <div className="tags has-addons">
+                    <span className="tag">
+                        <i className="fas fa-signal"></i> &nbsp; Network
+                    </span>
+                    <span className="tag is-danger">{NETWORKS[props.networkId] || props.networkId }</span>
+                </div>
                 </a>
             </div>
         </div>
+        {/**  shown on mobile
+        <div class="navbar-menu is-active">
+            <a className="navbar-item">
+            <div className="tags has-addons">
+                <span className="tag">
+                    <i className="fas fa-signal"></i> &nbsp; Network
+                </span>
+                <span className="tag is-danger">{NETWORKS[props.networkId] || props.networkId }</span>
+            </div>
+            </a>
+        </div>
+        */}
     </nav>
 )
 

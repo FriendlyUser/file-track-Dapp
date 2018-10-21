@@ -6,7 +6,7 @@ import NavContainer from './components/NavContainer'
 import 'bulma/css/bulma.css'
 
 // import FileTable from './components/FileTable'
-//import './App.css'
+// import './App.css'
 
 class App extends Component {
   

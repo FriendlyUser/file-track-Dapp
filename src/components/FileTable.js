@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import { IPFSURL } from '../util/constants'
 import EthAddress from './EthAddress.js';
 
-//import IpfsTable from './IpfsTable'
+import ErrorBoundary from './ErrorBoundary'
+// import IpfsTable from './IpfsTable'
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
 
@@ -17,7 +18,6 @@ class FileTable extends Component {
      */
     constructor(props, context) {
         super(props)
-        console.log(this.props)
         this.drizzle = context.drizzle
         this.web3 = this.props.web3
         this.contracts = this.props.contracts
@@ -39,31 +39,36 @@ class FileTable extends Component {
         var table = []
         // looks like an struct within an array can't be stored so easily
         // var tags = []
+        // improve error handling when zero files are added
         this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
-           for (var i = 0; i < lastIds; i++) {
+            // eslint-disable-line no-loop-func
+           for (let i = 0; i < lastIds; i++) {
              this.drizzle.contracts.FileList.methods.files(this.state.fileOwnerAddress,i).call()
              .then((fileItem) => {
                // add file item to table, missing tags
                fileItem.filename = this.drizzle.web3.utils.hexToUtf8(fileItem.filename)
                fileItem.timestamp = this.timeConverter(fileItem.timestamp)
-               table.push(fileItem)
-               /** Can't return bytes from struct array.
-               this.drizzle.contracts.FileList.methods.getFileTags("0xE2e379daF0E1237612ba870fA730c6B45e553563",2).call()
+               /** Can't return bytes from struct array, maybe split this into into another loop?. */
+               this.drizzle.contracts.FileList.methods.getFileTags(this.state.fileOwnerAddress,i).call()
                .then((tags) => {
-                  console.log(tags)
+                  // console.log(tags)
                   // convert all non 0 bytes tag fields to hex
                   for (var j=0; j < 5; j++) {
                     if (tags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
-                      console.log(tags[j])
-                      tags[j] = this.drizzle.web3.utils.hexToAscii(tags[j])
+                      // console.log(tags[j])
+                      tags[j] = this.drizzle.web3.utils.hexToUtf8(tags[j])
                     } else {
-                      console.log(tags[j])
+                      // console.log(tags[j])
                       tags[j] = 'N/A'
                     }
-                  }                  
-               });
-               */
+                  }
+                  fileItem.tags = tags
+                  console.log(tags)
+               })
+               // console.log(fileItem)
+               // add fileItem to table
+               table.push(fileItem)
              });
            }
         })
@@ -118,37 +123,26 @@ class FileTable extends Component {
     }
 
     render() {
-        console.log(this.drizzle)
         // See https://menubar.io/reactjs-tables
         return(
             <div class="container">
-            <h4> Files Table </h4>
+            <ErrorBoundary>
+            <h2> Files Table </h2>
               <table class="table">
                 <thead>
                   <tr>
-                  <th>FileName</th>
-                  <th>Owner </th>
-                  <th>Ipfs Hash</th>
-                  <th><abbr title="Played">TimeStamp</abbr></th>
+                  <th><i className="fas fa-file"></i> FileName</th>
+                  <th><i className="fas fa-user"></i> Owner </th>
+                  <th><abbr title="Unique Identifier on the interplanetery file system"> <i className="fas fa-hashtag"></i> Ipfs Hash </abbr> </th>
+                  <th><abbr title="Unix Timestamp"> <i className="fas fa-clock"></i>  TimeStamp</abbr></th>
+                  <th><i className="fas fa-tag"></i> Tags</th>
                   </tr>
                 </thead>
                 <tbody>
                 {this.fileArray !== undefined &&
                  this.fileArray.map(ipfsRow =>
                     <tr>
-                    {/** Tags (bytes32 array) can't be returned from strucuts
-                        <td>
-                        <div class="tags">
-                          <span class="tag is-success">{ipfsRow[0]}</span>
-                          <span class="tag is-info">{ipfsRow[1]}</span>
-                          <span class="tag is-danger">{ipfsRow[2]}</span>
-                          <span class="tag is-link">{ipfsRow[3]}</span>
-                          <span class="tag is-primary">{ipfsRow[4]}</span>
-                          <span class="tag is-white">{ipfsRow[4]}</span>
-                        </div>
-                        </td>
-                    */}
-                    <td>{ipfsRow.filename}</td>
+                    <td key={ipfsRow.filename}>{ipfsRow.filename}</td>
                     <td>
                         <EthAddress
                             address = {ipfsRow.owner}
@@ -161,6 +155,17 @@ class FileTable extends Component {
                         View File </a>
                     </td>
                     <td>{ipfsRow.timestamp}</td>
+                    {/** Return inputted Tags */
+                        <td>
+                        <div class="tags">
+                          <span class="tag is-success">{ipfsRow.tags[0]}</span>
+                          <span class="tag is-info">{ipfsRow.tags[1]}</span>
+                          <span class="tag is-danger">{ipfsRow.tags[2]}</span>
+                          <span class="tag is-link">{ipfsRow.tags[3]}</span>
+                          <span class="tag is-primary">{ipfsRow.tags[4]}</span>
+                        </div>
+                        </td>
+                    }
                     </tr>
                 )}
                 </tbody>
@@ -217,6 +222,7 @@ class FileTable extends Component {
                 </tbody>
              </table>
             */}
+            </ErrorBoundary>
             </div>  
                 
         )
