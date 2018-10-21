@@ -38,6 +38,7 @@ Uses the css framework bulma and font-awesome for icons.
 - [ ] Add front-end for authentication
 - [ ] Add component for viewing files for other users
 - [ ] Add component for viewing files for self, use bulma table.
+- [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
 ## Installation
 

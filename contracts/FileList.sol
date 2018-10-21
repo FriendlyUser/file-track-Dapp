@@ -23,9 +23,11 @@ contract FileList {
    mapping(address => File[maxAmountOfFiles]) public files;
    // Owner => last files id
    mapping(address => uint256) public lastIds;
+   // consider mapping hash to set of tags
    
    /// @dev main event for smart contract, needed for drizzle to update list of files
    event fileAdded (uint256 fileid, string ipfshash, bytes32 _filename);
+   event tagsAdded (bytes32[5] tags);
 
    /// @dev Add a file to the list
    /// @param ipfshash an ipfshash returned after an image is finished uploaded
@@ -35,6 +37,11 @@ contract FileList {
    function addFile(string ipfshash, bytes32 _filename, bytes32[5] tags) public {
  
       File memory myFile = File(lastIds[msg.sender], ipfshash, _filename, tags,  msg.sender, now);
+      // explicitly store tags
+      
+      myFile.tags = tags;
+      // baka
+      emit tagsAdded (myFile.tags);
       // store new file in mapping
 
       files[msg.sender][lastIds[msg.sender]] = myFile;
@@ -50,4 +57,16 @@ contract FileList {
    function getFileTags(address owner, uint256 _index) external view returns (bytes32[5]) {
        return files[owner][_index].tags;
   }
+  
+  function stringToBytes32(string memory source) internal returns (bytes32 result) {
+    bytes memory tempEmptyStringTest = bytes(source);
+    if (tempEmptyStringTest.length == 0) {
+        return 0x0;
+    }
+
+    assembly {
+        result := mload(add(source, 32))
+    }
+}
+
 }

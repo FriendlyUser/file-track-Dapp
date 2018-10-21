@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { drizzleConnect } from 'drizzle-react'
 import PropTypes from 'prop-types'
+import EthAddress from './EthAddress.js';
+
 //import { drizzleConnect } from 'drizzle-react'
 //import { ContractData } from 'drizzle-react-components'
 
@@ -15,10 +18,11 @@ class UploadFileIPFS extends Component {
      * @param {context} context the drizzle context object used to manage contract state
      */
     constructor(props, context) {
-        super(props)
+        super(props, context)
         this.drizzle = context.drizzle
         this.account = this.props.accounts[0]
         this.handleChange = this.handleChange.bind(this);
+        this.fileListAddress = this.drizzle.contracts.FileList.address
         this.state = {
              ipfsHash: null,
              buffer:'',
@@ -169,71 +173,71 @@ class UploadFileIPFS extends Component {
         return(
             <div class="container">
                 {/*IPFS PAGE*/}
-                <h3> Upload reward picture</h3>
-                    <form onSubmit={this.onSubmit}>
-                       <div className="field">
-                          <label className="label">Filename</label>
-                          <div className="control has-icons-left has-icons-right">
-                            <input className={fileClasses} type="text" placeholder="Enter name of file" name="filename" 
-                                onChange={this.handleChange}
-                            />
-                            <span className="icon is-small is-left">
-                              <i className="fas fa-user"></i>
-                            </span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-check"></i>
-                            </span>
-                          </div>
-                          {  this.state.fileNameValid === true
-                                ?
-                                    <p className="help is-success">File name valid</p>
-                                :
-                                    <p className="help is-danger">Enter a longer name</p> 
-                          }
+                <h3> Upload Document to IPFS</h3>
+                <form onSubmit={this.onSubmit}>
+                    <div className="field">
+                        <label className="label">Filename</label>
+                        <div className="control has-icons-left has-icons-right">
+                        <input className={fileClasses} type="text" placeholder="Enter name of file" name="filename" 
+                            onChange={this.handleChange}
+                        />
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-user"></i>
+                        </span>
+                        <span className="icon is-small is-right">
+                            <i className="fas fa-check"></i>
+                        </span>
                         </div>
-                        <div className="field">
-                          <label className="label">Tags (Enter comma seperated string)</label>
-                          <div className="control has-icons-left has-icons-right">
-                            <input className={tagClasses} type="text" placeholder="Enter List of Tags" name="tags" 
-                                onChange={this.handleChange}
-                            />
-                            <span className="icon is-small is-left">
-                              <i className="fas fa-file"></i>
-                            </span>
-                            <span className="icon is-small is-right">
-                              <i className="fas fa-exclamation-triangle"></i>
-                            </span>
-                                <strong> {this.state.tags} </strong>
-                          </div>
-                          {  this.state.tagsValid === true
-                                ?
-                                    <p className="help is-success">Tags are valid</p>
-                                :
-                                    <p className="help is-danger">Proper commas and no spaces please.</p> 
-                          }
+                        {  this.state.fileNameValid === true
+                            ?
+                                <p className="help is-success">File name valid</p>
+                            :
+                                <p className="help is-danger">Enter a longer name</p> 
+                        }
+                    </div>
+                    <div className="field">
+                        <label className="label">Tags (Enter comma seperated string)</label>
+                        <div className="control has-icons-left has-icons-right">
+                        <input className={tagClasses} type="text" placeholder="Enter List of Tags" name="tags" 
+                            onChange={this.handleChange}
+                        />
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-file"></i>
+                        </span>
+                        <span className="icon is-small is-right">
+                            <i className="fas fa-exclamation-triangle"></i>
+                        </span>
+                            <strong> {this.state.tags} </strong>
                         </div>
-                        <div className="file">
-                          <label className="file-label">
-                            <input className="file-input" type="file" name="resume" onChange = {this.captureFile} />
-                            <span className="file-cta">
-                              <span className="file-icon">
-                                <i className="fas fa-upload"></i>
-                              </span>
-                              <span className="file-label">
-                                Choose a file…
-                              </span>
+                        {  this.state.tagsValid === true
+                            ?
+                                <p className="help is-success">Tags are valid</p>
+                            :
+                                <p className="help is-danger">Proper commas and no spaces please.</p> 
+                        }
+                    </div>
+                    <div className="file">
+                        <label className="file-label">
+                        <input className="file-input" type="file" name="resume" onChange = {this.captureFile} />
+                        <span className="file-cta">
+                            <span className="file-icon">
+                            <i className="fas fa-upload"></i>
                             </span>
-                          </label>
-                        </div>
-                            <div className="field is-grouped">
-                              <div className="control">
-                                <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
-                              </div>
-                              <div className="control">
-                                <button className="button is-text">Cancel</button>
-                              </div>
-                            </div> 
-                    </form>
+                            <span className="file-label">
+                            Choose a file…
+                            </span>
+                        </span>
+                        </label>
+                    </div>
+                        <div className="field is-grouped">
+                            <div className="control">
+                            <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
+                            </div>
+                            <div className="control">
+                            <button className="button is-text">Cancel</button>
+                            </div>
+                        </div> 
+                </form>
                 <hr/>
                 { /**
                     this.state.imageUploading  &&
@@ -270,6 +274,12 @@ class UploadFileIPFS extends Component {
                         </tr>
                     </tbody>
                 </table>
+                
+                <EthAddress 
+                   address = {this.fileListAddress}
+                   networkId = {this.props.web3.networkId}
+                   etherscan
+                />
             </div>
         )
     }
@@ -277,10 +287,16 @@ class UploadFileIPFS extends Component {
 
 UploadFileIPFS.contextTypes = {
     drizzle: PropTypes.object
-  }
+ }
 
-UploadFileIPFS.propTypes = {
-    rewardAddress: PropTypes.string
+
+const mapStateToProps = state => {
+  return {
+    accounts: state.accounts,
+    drizzleStatus: state.drizzleStatus,
+    FileList: state.contracts.FileList,
+    web3: state.web3
+  }
 }
 
-export default UploadFileIPFS
+export default drizzleConnect(UploadFileIPFS, mapStateToProps);

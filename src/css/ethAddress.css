@@ -1,0 +1,55 @@
+.eth-address {
+  padding: 15px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.eth-address .copy-icon {
+  display: none;
+  position: absolute;
+  right: -15px;
+  top: 4px;
+}
+
+.eth-address.copy-enabled:hover {
+  padding-left: 10px;
+  padding-right: 25px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.eth-address:hover .copy-icon {
+  display: block;
+}
+
+.eth-address.showing-copied {
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.eth-address.showing-copied .copy-icon {
+  display: block;
+}
+
+.eth-address.error {
+  color: #d63d26;
+}
+
+a.eth-address {
+  padding: 0;
+}
+
+a.eth-address.copy-enabled:hover {
+  background: none;
+}
+
+.sm-message {
+  background-color: black;
+  color: white;
+  padding: 4px;
+  border-radius: 3px;
+  position: absolute;
+  right: 0;
+  bottom: -24px;
+  font-size: 11px;
+}

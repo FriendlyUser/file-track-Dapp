@@ -1,5 +1,5 @@
 var FileList = artifacts.require("./FileList.sol");
-//const utils = require('./helpers/utils')
+// const utils = require('./helpers/utils')
 
 contract('FileList', function(accounts) {
     let myUserInstance;
@@ -14,7 +14,7 @@ contract('FileList', function(accounts) {
         myFileListInstance = await FileList.deployed()
         assert.ok(myFileListInstance)
     })
-    it("get the size of the FileList contract", function() {
+    it("...get the size of the FileList contract", function() {
         return FileList.deployed().then(function(instance) {
              var bytecode = instance.constructor._json.bytecode;
              var deployed = instance.constructor._json.deployedBytecode;
@@ -25,23 +25,52 @@ contract('FileList', function(accounts) {
              console.log("    initialisation and constructor code in bytes = ", sizeOfB - sizeOfD);
         }); 
     });
-    describe("Add File", async() => {
+    describe("...Add File", async() => {
         //console.log('Cool')
-        it("Adding a File Item", async() =>  {
+        // https://ethereum.stackexchange.com/questions/23058/how-to-convert-string-to-bytes32-in-web3js
+        // https://stackoverflow.com/questions/46491123/string-parameter-not-automatically-parsing-into-bytes32-when-used-with-form/46491305
+        it("......Adding a File Item", async() =>  {
             console.log("      adding File Items")
-            const tags = ["0x23","0x24","0x23","0x24","0x23","0x24","0x23","0x24","0x23","0x24"]
+            const tags = ["blockchain","ENGR001","games","life","anime"]
+            const ipfsTags = ["0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000","0x68656c6c6f0000000000000000000000"]
+            console.log(ipfsTags)
+            for (var i = 0; i < ipfsTags.length; i++) {
+                ipfsTags[i] = web3.fromAscii(tags[i])
+            }
+            //    console.log(web3..fromAscii(tags[i]))
+            //    console.log(ipfsTags)
             const hash1 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename1 = "test1"
+            const filename1 = web3.fromAscii("test1")
             // convert filenames to hex later 
-            await myFileListInstance.addFile(hash1,"0x2356",tags)
+            await myFileListInstance.addFile(hash1,filename1,ipfsTags)
             const hash2 = "QmWWQSuPMS6aXCbZKpEjPHPUZN2NjB3YrhJTHsV4X3vb2t"
-            const filename2 = "test2"
-            await myFileListInstance.addFile(hash2,"0x235643",tags)
+            const filename2 =  web3.fromAscii("test2")
+            await myFileListInstance.addFile(hash2,filename2,ipfsTags)
         });
-        it("Getting Number of Files",async() => {
+        it("......Getting Number of Files",async() => {
             console.log("      getting number of Files")
             const lastIds = await myFileListInstance.lastIds(owner)
             assert.strictEqual(2,lastIds.toNumber())
+        })
+        it("......Getting list of tags", async() => {
+            const tags = ["blockchain","ENGR001","games","life","anime"]
+            const returnedTags = await myFileListInstance.getFileTags(owner,0)
+            console.log(returnedTags)
+            for (var j=0; j < 5; j++) {
+                if (returnedTags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
+                  console.log('The returned tags are: ')
+                  console.log(returnedTags[j])
+                  returnedTags[j] = web3.toUtf8(returnedTags[j])
+                  console.log('The returned tags are: null???')
+                } else {
+                  returnedTags[j] = 'N/A'
+                }
+            }
+            console.log('The returned tags are: ')
+            console.log(returnedTags)
+            // promises can be confusing, but these are awaits, whatever
+            // https://ethereum.stackexchange.com/questions/47881/remove-trailing-zero-from-web3-toascii-conversion
+            // assert.strictEqual(returnedTags[0],"blockchain")
         })
         /*
         it("Getting Data of all todos",async() => {
