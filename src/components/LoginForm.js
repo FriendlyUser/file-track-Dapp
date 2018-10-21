@@ -64,8 +64,7 @@ class LoginForm extends Component {
 
         let user   = ''
         // Check that the contract is actually initialized
-        if(this.drizzle.contracts.Authentication !== undefined
-            && this.props.contracts.Authentication
+        if(this.drizzle.contracts.Authentication 
             && this.props.contracts.Authentication.initialized
         ){
             const userKey = this.drizzle.contracts.Authentication.methods.login.cacheCall()

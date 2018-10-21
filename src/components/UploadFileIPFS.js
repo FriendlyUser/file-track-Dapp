@@ -77,11 +77,12 @@ class UploadFileIPFS extends Component {
             this.setState({txMSG: 'METAMASK'})
             
             // convert inputted tags to string
-            const ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
+            let ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
             console.log(inputtedTags)
-            for (var i = 0; i < ipfsTags; i++)
+            for (var i = 0; i < ipfsTags.length; i++)
                 ipfsTags[i] = this.drizzle.web3.utils.utf8ToHex(inputtedTags[i]);
-
+            
+            console.log(ipfsTags)
             // Convert filename to bytes32
             this.drizzle.contracts.FileList.methods.addFile(this.state.ipfsHash,ipfsFileName,ipfsTags).send({
                 from: this.account

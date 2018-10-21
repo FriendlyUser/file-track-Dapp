@@ -17,7 +17,6 @@ class FileTable extends Component {
      */
     constructor(props, context) {
         super(props)
-        console.log(this.props)
         this.drizzle = context.drizzle
         this.web3 = this.props.web3
         this.contracts = this.props.contracts
@@ -47,23 +46,26 @@ class FileTable extends Component {
                // add file item to table, missing tags
                fileItem.filename = this.drizzle.web3.utils.hexToUtf8(fileItem.filename)
                fileItem.timestamp = this.timeConverter(fileItem.timestamp)
-               table.push(fileItem)
-               /** Can't return bytes from struct array.
-               this.drizzle.contracts.FileList.methods.getFileTags("0xE2e379daF0E1237612ba870fA730c6B45e553563",2).call()
+               /** Can't return bytes from struct array. */
+               this.drizzle.contracts.FileList.methods.getFileTags(this.state.fileOwnerAddress,i).call()
                .then((tags) => {
-                  console.log(tags)
+                  // console.log(tags)
                   // convert all non 0 bytes tag fields to hex
                   for (var j=0; j < 5; j++) {
                     if (tags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
-                      console.log(tags[j])
+                      // console.log(tags[j])
                       tags[j] = this.drizzle.web3.utils.hexToAscii(tags[j])
                     } else {
-                      console.log(tags[j])
+                      // console.log(tags[j])
                       tags[j] = 'N/A'
                     }
-                  }                  
-               });
-               */
+                  }
+                  fileItem.tags = tags
+                  console.log(tags)
+               })
+               // console.log(fileItem)
+               // add fileItem to table
+               table.push(fileItem)
              });
            }
         })
@@ -118,7 +120,6 @@ class FileTable extends Component {
     }
 
     render() {
-        console.log(this.drizzle)
         // See https://menubar.io/reactjs-tables
         return(
             <div class="container">
@@ -136,15 +137,15 @@ class FileTable extends Component {
                 {this.fileArray !== undefined &&
                  this.fileArray.map(ipfsRow =>
                     <tr>
-                    {/** Tags (bytes32 array) can't be returned from strucuts
+                    {/** Tags (bytes32 array) can't be returned from structs, perhaps drizzle issue
+                    
                         <td>
                         <div class="tags">
-                          <span class="tag is-success">{ipfsRow[0]}</span>
-                          <span class="tag is-info">{ipfsRow[1]}</span>
-                          <span class="tag is-danger">{ipfsRow[2]}</span>
-                          <span class="tag is-link">{ipfsRow[3]}</span>
-                          <span class="tag is-primary">{ipfsRow[4]}</span>
-                          <span class="tag is-white">{ipfsRow[4]}</span>
+                          <span class="tag is-success">{ipfsRow.tags[0]}</span>
+                          <span class="tag is-info">{ipfsRow.tags[1]}</span>
+                          <span class="tag is-danger">{ipfsRow.tags[2]}</span>
+                          <span class="tag is-link">{ipfsRow.tags[3]}</span>
+                          <span class="tag is-primary">{ipfsRow.tags[4]}</span>
                         </div>
                         </td>
                     */}
