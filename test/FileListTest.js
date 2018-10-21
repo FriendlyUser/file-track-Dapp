@@ -71,11 +71,11 @@ contract('FileList', function(accounts) {
             // https://ethereum.stackexchange.com/questions/47881/remove-trailing-zero-from-web3-toascii-conversion
               var str = "";
               var i = 0, l = returnedTags[0].length;
-              if (hex.substring(0, 2) === '0x') {
+              if (returnedTags[0].substring(0, 2) === '0x') {
                 i = 2;
               }
               for (; i < l; i+=2) {
-                var code = parseInt(hex.substr(i, 2), 16);
+                var code = parseInt(returnedTags[0].substr(i, 2), 16);
                 if(code != 0) {
                   str += String.fromCharCode(code);
                 }
