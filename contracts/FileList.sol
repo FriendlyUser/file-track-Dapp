@@ -38,9 +38,7 @@ contract FileList {
  
       File memory myFile = File(lastIds[msg.sender], ipfshash, _filename, tags,  msg.sender, now);
       // explicitly store tags
-      
       myFile.tags = tags;
-      // baka
       emit tagsAdded (myFile.tags);
       // store new file in mapping
 
@@ -57,16 +55,5 @@ contract FileList {
    function getFileTags(address owner, uint256 _index) external view returns (bytes32[5]) {
        return files[owner][_index].tags;
   }
-  
-  function stringToBytes32(string memory source) internal returns (bytes32 result) {
-    bytes memory tempEmptyStringTest = bytes(source);
-    if (tempEmptyStringTest.length == 0) {
-        return 0x0;
-    }
-
-    assembly {
-        result := mload(add(source, 32))
-    }
-}
 
 }
