@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { AccountData} from 'drizzle-react-components'
-import logo from '../../logo.png'
+// import logo from '../../logo.png'
 import UploadFileIPFS from '../../components/UploadFileIPFS'
 
 import FileTable from '../../components/FileTable'
