@@ -40,13 +40,14 @@ class FileTable extends Component {
         // var tags = []
         this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
-           for (var i = 0; i < lastIds; i++) {
+            // eslint-disable-line no-loop-func
+           for (let i = 0; i < lastIds; i++) {
              this.drizzle.contracts.FileList.methods.files(this.state.fileOwnerAddress,i).call()
              .then((fileItem) => {
                // add file item to table, missing tags
                fileItem.filename = this.drizzle.web3.utils.hexToUtf8(fileItem.filename)
                fileItem.timestamp = this.timeConverter(fileItem.timestamp)
-               /** Can't return bytes from struct array. */
+               /** Can't return bytes from struct array, maybe split this into into another loop?. */
                this.drizzle.contracts.FileList.methods.getFileTags(this.state.fileOwnerAddress,i).call()
                .then((tags) => {
                   // console.log(tags)
