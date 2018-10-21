@@ -24,7 +24,9 @@ const Nav = props => (
                <a className="navbar-item" href="https://friendlyuser.github.io/file-track-Dapp/">
                  <strong>Docs</strong>
                </a>
-               <a className="navbar-item">
+            </div>
+            <div className="navbar-end">
+                <a className="navbar-item">
                 <div className="tags has-addons">
                     <span className="tag">
                         <i className="fas fa-signal"></i> &nbsp; Network

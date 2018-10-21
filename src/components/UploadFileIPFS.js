@@ -78,8 +78,7 @@ class UploadFileIPFS extends Component {
             
             // convert inputted tags to string
             let ipfsTags = ["0x00","0x00","0x00","0x00","0x00"]
-            console.log(inputtedTags)
-            for (var i = 0; i < ipfsTags.length; i++)
+            for (var i = 0; i < inputtedTags.length; i++)
                 ipfsTags[i] = this.drizzle.web3.utils.utf8ToHex(inputtedTags[i]);
             
             console.log(ipfsTags)

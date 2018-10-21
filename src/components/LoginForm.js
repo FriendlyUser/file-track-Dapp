@@ -82,7 +82,7 @@ class LoginForm extends Component {
             }
         }
         return(
-            <div class="container">
+            <div className="container">
                 {/*IPFS PAGE*/}
                 { user === '' 
                 ? 
@@ -106,7 +106,6 @@ class LoginForm extends Component {
                             </div>
                         </div> 
                     </form>
-                    <hr/>  
                     </div>
                 :
                     <div>

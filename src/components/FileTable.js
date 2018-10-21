@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import { IPFSURL } from '../util/constants'
 import EthAddress from './EthAddress.js';
 
-//import IpfsTable from './IpfsTable'
+import ErrorBoundary from './ErrorBoundary'
+// import IpfsTable from './IpfsTable'
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
 
@@ -38,6 +39,7 @@ class FileTable extends Component {
         var table = []
         // looks like an struct within an array can't be stored so easily
         // var tags = []
+        // improve error handling when zero files are added
         this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
             // eslint-disable-line no-loop-func
@@ -55,7 +57,7 @@ class FileTable extends Component {
                   for (var j=0; j < 5; j++) {
                     if (tags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
                       // console.log(tags[j])
-                      tags[j] = this.drizzle.web3.utils.hexToAscii(tags[j])
+                      tags[j] = this.drizzle.web3.utils.hexToUtf8(tags[j])
                     } else {
                       // console.log(tags[j])
                       tags[j] = 'N/A'
@@ -124,6 +126,7 @@ class FileTable extends Component {
         // See https://menubar.io/reactjs-tables
         return(
             <div class="container">
+            <ErrorBoundary>
             <h2> Files Table </h2>
               <table class="table">
                 <thead>
@@ -132,23 +135,13 @@ class FileTable extends Component {
                   <th><i className="fas fa-user"></i> Owner </th>
                   <th><abbr title="Unique Identifier on the interplanetery file system"> <i className="fas fa-hashtag"></i> Ipfs Hash </abbr> </th>
                   <th><abbr title="Unix Timestamp"> <i className="fas fa-clock"></i>  TimeStamp</abbr></th>
+                  <th><i className="fas fa-tag"></i> Tags</th>
                   </tr>
                 </thead>
                 <tbody>
                 {this.fileArray !== undefined &&
                  this.fileArray.map(ipfsRow =>
                     <tr>
-                    {/** Tags (bytes32 array) can't be returned from structs, perhaps drizzle issue
-                        <td>
-                        <div class="tags">
-                          <span class="tag is-success">{ipfsRow.tags[0]}</span>
-                          <span class="tag is-info">{ipfsRow.tags[1]}</span>
-                          <span class="tag is-danger">{ipfsRow.tags[2]}</span>
-                          <span class="tag is-link">{ipfsRow.tags[3]}</span>
-                          <span class="tag is-primary">{ipfsRow.tags[4]}</span>
-                        </div>
-                        </td>
-                    */}
                     <td key={ipfsRow.filename}>{ipfsRow.filename}</td>
                     <td>
                         <EthAddress
@@ -162,6 +155,17 @@ class FileTable extends Component {
                         View File </a>
                     </td>
                     <td>{ipfsRow.timestamp}</td>
+                    {/** Return inputted Tags */
+                        <td>
+                        <div class="tags">
+                          <span class="tag is-success">{ipfsRow.tags[0]}</span>
+                          <span class="tag is-info">{ipfsRow.tags[1]}</span>
+                          <span class="tag is-danger">{ipfsRow.tags[2]}</span>
+                          <span class="tag is-link">{ipfsRow.tags[3]}</span>
+                          <span class="tag is-primary">{ipfsRow.tags[4]}</span>
+                        </div>
+                        </td>
+                    }
                     </tr>
                 )}
                 </tbody>
@@ -218,6 +222,7 @@ class FileTable extends Component {
                 </tbody>
              </table>
             */}
+            </ErrorBoundary>
             </div>  
                 
         )
