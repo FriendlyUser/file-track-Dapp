@@ -5,8 +5,10 @@
 
 Simple Dapp that can track files uploaded to IPFS.
 
-Available at IPFSDapp.surge.sh
+Available at http://IPFSDapp.surge.sh
 
+![Screenshot](docs/ipfs-dapp-screenshot.png)
+Built using standard truffle and solidity.
 ![Dapp Architecture](docs/dapp-arch.png)
 
 Upload and track IPFS files securely on the Ethereum Network, supports UPORT

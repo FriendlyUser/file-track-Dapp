@@ -3,14 +3,17 @@
 # File-track Dapp 
 
 
-Simple Dapp that can track files uploaded to IPFS.
+![Screenshot](ipfs-dapp-screenshot.png)
+
+Simple Dapp that can track files uploaded to IPFS. See http://ipfsDapp.surge.sh
 
 
 ![Dapp Architecture](dapp-arch.png)
 
-Upload and track IPFS files securely on the Ethereum Network, supports UPORT
+Upload and track IPFS files securely on the Ethereum Network.
 
 ![Dapp Structure](ipfs-dapp.png)
+
 
 Images are converted from pdf to png using imagemagick
 
