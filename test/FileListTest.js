@@ -59,9 +59,9 @@ contract('FileList', function(accounts) {
             for (var j=0; j < 5; j++) {
                 if (returnedTags[j] !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
                   console.log(tags[j])
-                  returnedTags[j] = web3.toAscii(tags[j])
+                  returnedTags[j] = web3.toAscii(returnedTags[j])
                 } else {
-                  console.log(tags[j])
+                  console.log(returnedTags[j])
                   returnedTags[j] = 'N/A'
                 }
             }
