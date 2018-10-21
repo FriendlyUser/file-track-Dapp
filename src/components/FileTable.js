@@ -138,7 +138,6 @@ class FileTable extends Component {
                  this.fileArray.map(ipfsRow =>
                     <tr>
                     {/** Tags (bytes32 array) can't be returned from structs, perhaps drizzle issue
-                    
                         <td>
                         <div class="tags">
                           <span class="tag is-success">{ipfsRow.tags[0]}</span>
