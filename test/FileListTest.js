@@ -69,19 +69,7 @@ contract('FileList', function(accounts) {
             console.log('The returned tags are: ')
             console.log(returnedTags)
             // https://ethereum.stackexchange.com/questions/47881/remove-trailing-zero-from-web3-toascii-conversion
-              var str = "";
-              var i = 0, l = returnedTags[0].length;
-              if (returnedTags[0].substring(0, 2) === '0x') {
-                i = 2;
-              }
-              for (; i < l; i+=2) {
-                var code = parseInt(returnedTags[0].substr(i, 2), 16);
-                if(code != 0) {
-                  str += String.fromCharCode(code);
-                }
-              }
-              
-            assert.strictEqual(str,"blockchain")
+            assert.strictEqual(returnedTags[0],"blockchain")
         })
         /*
         it("Getting Data of all todos",async() => {
