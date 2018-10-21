@@ -53,6 +53,7 @@ contract('FileList', function(accounts) {
             assert.strictEqual(2,lastIds.toNumber())
         })
         it("......Getting list of tags", async() => {
+            const tags = ["blockchain","ENGR001","games","life","anime"]
             const returnedTags = await myFileListInstance.getFileTags(owner,0)
             console.log(returnedTags)
             for (var j=0; j < 5; j++) {
@@ -64,7 +65,7 @@ contract('FileList', function(accounts) {
                   returnedTags[j] = 'N/A'
                 }
             }
-            assert.strictEqual(returnedTags[0],"hello")
+            assert.strictEqual(returnedTags[0],"blockchain")
         })
         /*
         it("Getting Data of all todos",async() => {
