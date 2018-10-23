@@ -42,6 +42,7 @@ Uses the css framework bulma and font-awesome for icons.
 - [x] Boilerplate for Front-end testing
 - [x] Add component for viewing files for other users
 - [ ] Improve Form Validation and UI
+- [ ] Try to add drizzle-front-end testing for components, this ought to be fun, maybe write an medium article about this.
 - [ ] Add Contact Us Page, FAQ Page, etc ...
 - [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
