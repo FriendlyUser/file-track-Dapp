@@ -178,7 +178,7 @@ class UploadFileIPFS extends Component {
                 <h3><i className="fab fa-ethereum">&nbsp;</i> Upload Document to IPFS &nbsp; 
                 
                 <span>
-                Contract:
+                <strong> Contract: </strong> &nbsp;
                 <EthAddress 
                    address = {this.fileListAddress}
                    networkId = {this.props.web3.networkId}

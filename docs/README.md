@@ -23,9 +23,16 @@ convert -density 400 -resize 50% ipfs-dapp.pdf ipfs-dapp.png
 
 ## Tasks
 
-- [x] Add Form Validation 
-- [ ] Disable buttons conditionally.
-- [ ] Adding tags to smart contract 
+- [x] Truffle Test 
+- [x] User Registry Contract
+- [x] Basic Front End
+- [x] Design Auth Contract
+- [x] Add front-end for authentication
+- [x] Add component for viewing files for self, use bulma table.
+- [x] Boilerplate for Front-end testing
+- [x] Add component for viewing files for other users
+- [ ] Add Contact Us Page, FAQ Page, etc ...
+- [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
 |Filename                | IPFS Hash| url |
 | ---| ---| ---| 

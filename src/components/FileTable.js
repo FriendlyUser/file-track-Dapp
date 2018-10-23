@@ -156,6 +156,7 @@ class FileTable extends Component {
                     </td>
                     <td>{ipfsRow.timestamp}</td>
                     {/** Return inputted Tags */
+                     (ipfsRow.tags !== undefined && ipfsRow.tags.length > 3) &&
                         <td>
                         <div className="tags">
                           <span className="tag is-success">{ipfsRow.tags[0]}</span>
