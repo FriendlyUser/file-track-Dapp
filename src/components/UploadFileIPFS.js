@@ -30,7 +30,7 @@ class UploadFileIPFS extends Component {
              transactionHash:'',
              txReceipt: '',
              imageUploading: false,
-             txMSG: '',
+             txMSG: 'No Files Uploaded Yet',
              tags: '',
              filename: '',
              formErrors: {fileName: '', tags: ''},
@@ -66,7 +66,7 @@ class UploadFileIPFS extends Component {
         const ipfsFileName = this.drizzle.web3.utils.utf8ToHex(this.state.filename)
         
         this.setState({imageUploading: true })
-        this.setState({txMSG: 'IPFS-IMAGE'})
+        this.setState({txMSG: 'Uploading Image to IPFS'})
         //save document to IPFS,return its hash#, and set hash# to state
         await ipfs.add(this.state.buffer, (err, ipfsHash) => {
             //console.log(err,ipfsHash);
@@ -81,7 +81,7 @@ class UploadFileIPFS extends Component {
             for (var i = 0; i < inputtedTags.length; i++)
                 ipfsTags[i] = this.drizzle.web3.utils.utf8ToHex(inputtedTags[i]);
             
-            console.log(ipfsTags)
+            // console.log(ipfsTags)
             // Convert filename to bytes32
             this.drizzle.contracts.FileList.methods.addFile(this.state.ipfsHash,ipfsFileName,ipfsTags).send({
                 from: this.account
@@ -89,20 +89,22 @@ class UploadFileIPFS extends Component {
             .on('transactionHash', transactionHash => { 
                 //console.log('Transaction HASH: ' + transactionHash)
                 //this.setState({imageUploading: false });
-                this.setState({txMSG: 'IPFS-SM'})
+                this.setState({txMSG: 'Saving Hash to Smart Contract'})
                 this.setState({transactionHash: transactionHash})
             })
             .on('receipt', receipt => {
                 //console.log(receipt) // contains the new contract address
-                this.setState({txMSG: 'COMPLETE'})
+                this.setState({txMSG: 'Transation Complete'})
             })
             .on('confirmation', (confirmationNumber, receipt) => { 
+                this.setState({txMSG: 'Please Reload'})
                 this.setState({imageUploading: false });
+                window.location.reload()
                 //this.setState{((transactionHash: transactionHash))}
             })
             .on('error', error => { 
                 //console.log('Error has Occured: ' + error)
-                this.setState({txMSG: 'ERROR'})
+                this.setState({txMSG: 'Transacation failed'})
             })
         })
     }
@@ -173,7 +175,17 @@ class UploadFileIPFS extends Component {
         return(
             <div class="container">
                 {/*IPFS PAGE*/}
-                <h3> Upload Document to IPFS</h3>
+                <h3><i className="fab fa-ethereum">&nbsp;</i> Upload Document to IPFS &nbsp; 
+                
+                <span>
+                Contract:
+                <EthAddress 
+                   address = {this.fileListAddress}
+                   networkId = {this.props.web3.networkId}
+                   etherscan
+                />
+                </span> 
+                </h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="field">
                         <label className="label">Filename</label>
@@ -216,6 +228,7 @@ class UploadFileIPFS extends Component {
                                 <p className="help is-danger">Proper commas and no spaces please.</p> 
                         }
                     </div>
+ 
                     <div className="file">
                         <label className="file-label">
                         <input className="file-input" type="file" name="resume" onChange = {this.captureFile} />
@@ -238,6 +251,7 @@ class UploadFileIPFS extends Component {
                             </div>
                         </div> 
                 </form>
+
                 <hr/>
                 { /**
                     this.state.imageUploading  &&
@@ -248,38 +262,46 @@ class UploadFileIPFS extends Component {
                             </figcaption>
                         </figure>
                 */}
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Tx Receipt Category</th>
-                        <th> </th>
-                        <th>Values</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td className="ethAddress">IPFS Hash stored on Ethereum</td>
-                            <td> : </td>
-                            <td className="ethAddress">{this.state.ipfsHash}</td>
-                        </tr>
-                        <tr>
-                            <td>Ethereum Contract Address</td>
-                            <td> : </td>
-                            <td className="ethAddress">{this.state.ethAddress}</td>
-                        </tr>
-                        <tr>
-                            <td className="ethAddress">Tx # </td>
-                            <td> : </td>
-                            <td className="ethAddress">{this.state.transactionHash}</td>
-                        </tr>
-                    </tbody>
-                </table>
                 
-                <EthAddress 
-                   address = {this.fileListAddress}
-                   networkId = {this.props.web3.networkId}
-                   etherscan
-                />
+                { this.state.imageUploading &&
+                    <article class="message is-success">
+                      <div class="message-header">
+                        <p>{this.state.txMSG}</p>   
+                      </div>
+                      <div class="message-body">
+                        <br />
+                        <i className="fas fa-spinner fa-3x fa-pulse"></i>                
+                      </div>
+                    </article>
+                }
+                { (this.state.imageUploading || this.state.ipfsHash ) &&
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Tx Receipt Category</th>
+                            <th> </th>
+                            <th>Values</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="ethAddress">IPFS Hash stored on Ethereum</td>
+                                <td> : </td>
+                                <td className="ethAddress">{this.state.ipfsHash}</td>
+                            </tr>
+                            <tr>
+                                <td>Ethereum Contract Address</td>
+                                <td> : </td>
+                                <td className="ethAddress">{this.state.ethAddress}</td>
+                            </tr>
+                            <tr>
+                                <td className="ethAddress">Tx # </td>
+                                <td> : </td>
+                                <td className="ethAddress">{this.state.transactionHash}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
             </div>
         )
     }

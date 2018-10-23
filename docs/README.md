@@ -3,7 +3,7 @@
 # File-track Dapp 
 
 
-![Screenshot](ipfs-dapp-screenshot.png)
+![Screenshot](https://gateway.ipfs.io/ipfs/Qmb1ZEhXaTCfzdgVxXmW3WqfcjCRG4ctsieP2zkuhFZRtP)
 
 Simple Dapp that can track files uploaded to IPFS. See http://ipfsDapp.surge.sh
 

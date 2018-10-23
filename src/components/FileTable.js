@@ -125,10 +125,10 @@ class FileTable extends Component {
     render() {
         // See https://menubar.io/reactjs-tables
         return(
-            <div class="container">
+            <div className ="container">
             <ErrorBoundary>
             <h2> Files Table </h2>
-              <table class="table">
+              <table className ="table">
                 <thead>
                   <tr>
                   <th><i className="fas fa-file"></i> FileName</th>
@@ -157,12 +157,12 @@ class FileTable extends Component {
                     <td>{ipfsRow.timestamp}</td>
                     {/** Return inputted Tags */
                         <td>
-                        <div class="tags">
-                          <span class="tag is-success">{ipfsRow.tags[0]}</span>
-                          <span class="tag is-info">{ipfsRow.tags[1]}</span>
-                          <span class="tag is-danger">{ipfsRow.tags[2]}</span>
-                          <span class="tag is-link">{ipfsRow.tags[3]}</span>
-                          <span class="tag is-primary">{ipfsRow.tags[4]}</span>
+                        <div className="tags">
+                          <span className="tag is-success">{ipfsRow.tags[0]}</span>
+                          <span className="tag is-info">{ipfsRow.tags[1]}</span>
+                          <span className="tag is-danger">{ipfsRow.tags[2]}</span>
+                          <span className="tag is-link">{ipfsRow.tags[3]}</span>
+                          <span className="tag is-primary">{ipfsRow.tags[4]}</span>
                         </div>
                         </td>
                     }
