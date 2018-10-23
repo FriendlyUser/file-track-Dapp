@@ -7,7 +7,7 @@ Simple Dapp that can track files uploaded to IPFS.
 
 Available at http://IPFSDapp.surge.sh
 
-![Screenshot](docs/ipfs-dapp-screenshot.png)
+![Screenshot](https://gateway.ipfs.io/ipfs/Qmb1ZEhXaTCfzdgVxXmW3WqfcjCRG4ctsieP2zkuhFZRtP)
 Built using standard truffle and solidity.
 ![Dapp Architecture](docs/dapp-arch.png)
 
@@ -40,7 +40,10 @@ Uses the css framework bulma and font-awesome for icons.
 - [x] Add front-end for authentication
 - [x] Add component for viewing files for self, use bulma table.
 - [x] Boilerplate for Front-end testing
-- [ ] Add component for viewing files for other users
+- [x] Add component for viewing files for other users
+- [ ] Improve Form Validation and UI
+- [ ] Try to add drizzle-front-end testing for components, this ought to be fun, maybe write an medium article about this.
+- [ ] Add Contact Us Page, FAQ Page, etc ...
 - [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
 ## Installation

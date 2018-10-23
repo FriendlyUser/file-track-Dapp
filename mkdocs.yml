@@ -6,7 +6,7 @@ copyright: David Li 2018
 nav:
   - 'Introduction': '/'
   - 'Contracts':
-      - 'Authentication': contracts/Authentication.md'
+      - 'Authentication': 'contracts/Authentication.md'
       - 'FileList': 'contracts/FileList.md'    
       - 'Migrations': 'contracts/Migrations.md'
       - 'Simple Storage': 'contracts/SimpleStorage.md'
