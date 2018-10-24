@@ -17,8 +17,8 @@ class FileTable extends Component {
      * @param {context} context the drizzle context object used to manage contract state
      */
     constructor(props, context) {
-        super(props)
-        this.drizzle = context.drizzle
+        super(props,context)
+        this.drizzle = this.context.drizzle
         this.web3 = this.props.web3
         this.contracts = this.props.contracts
         this.fileListAddress = this.drizzle.contracts.FileList.methods

@@ -22,7 +22,6 @@ ReactDOM.render((
           <App>
              <Route exact path= '/' component={HomeContainer}/>
              <Route exact path="/dashboard" component={DashboardContainer} />
-             <Route exact path="/search" component={SearchContainer} />
              <Route path="/users/:id" 
                render={({match}) => <FileTable fileOwnerAddress={match.params.id}/>} />
           </App>

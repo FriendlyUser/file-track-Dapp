@@ -1,5 +1,6 @@
-import Search from './Search'
+import UserList from './UserList'
 import { drizzleConnect } from 'drizzle-react'
+
 // May still need this even with data function to refresh component on updates for this contract.
 const mapStateToProps = state => {
   return {
@@ -9,6 +10,6 @@ const mapStateToProps = state => {
   }
 }
 
-const SearchContainer = drizzleConnect(Search, mapStateToProps);
+const UserListContainer = drizzleConnect(Search, mapStateToProps);
 
-export default SearchContainer
+export default UserListContainer
