@@ -7,6 +7,7 @@ import App from './App'
 // layouts
 import HomeContainer from './layouts/home/HomeContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
+import SearchContainer from './layouts/search/SearchContainer'
 // components
 import LoadingContainer from './components/LoadingContainer'
 import FileTable from './components/FileTable'
@@ -21,8 +22,9 @@ ReactDOM.render((
           <App>
              <Route exact path= '/' component={HomeContainer}/>
              <Route exact path="/dashboard" component={DashboardContainer} />
+             <Route exact path="/search" component={SearchContainer} />
              <Route path="/users/:id" 
-                        render={({match}) => <FileTable fileOwnerAddress={match.params.id}/>} />
+               render={({match}) => <FileTable fileOwnerAddress={match.params.id}/>} />
           </App>
         </Router>
       </LoadingContainer>

@@ -30,6 +30,7 @@ class FileTable extends Component {
         }
     }
     componentDidMount() {
+        // consider using cacheCall to store the actual table, so that it updates
         this.drizzle.contracts.FileList.methods.lastIds(this.state.fileOwnerAddress).call()
         .then((lastIds) => {
           this.setState({

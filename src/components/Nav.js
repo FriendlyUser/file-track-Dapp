@@ -21,8 +21,8 @@ const Nav = props => (
                 <a className="navbar-item" href="/users/0xE2e379daF0E1237612ba870fA730c6B45e553563">
                  <strong><i className="fas fa-thumbs-up"></i> Example Files</strong>
                </a>
-               <a className="navbar-item" href="/users/0xE2e379daF0E1237612ba870fA730c6B45e553563">
-                 <strong><i className="fas fa-search"></i>  Search</strong>
+               <a className="navbar-item" href="/search">
+                 <strong><i className="fas fa-search"></i> Search</strong>
                </a>
             </div>
             <div className="navbar-end">
