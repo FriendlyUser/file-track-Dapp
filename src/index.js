@@ -7,7 +7,10 @@ import App from './App'
 // layouts
 import HomeContainer from './layouts/home/HomeContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
+<<<<<<< HEAD
 import SearchContainer from './layouts/search/SearchContainer'
+=======
+>>>>>>> f4034bba9930de376c219ece7dabe3e5336ef6fd
 // components
 import LoadingContainer from './components/LoadingContainer'
 import FileTable from './components/FileTable'
