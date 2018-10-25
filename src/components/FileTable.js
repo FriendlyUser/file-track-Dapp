@@ -3,7 +3,7 @@ import { drizzleConnect } from 'drizzle-react'
 import PropTypes from 'prop-types'
 
 import { IPFSURL } from '../util/constants'
-import EthAddress from './EthAddress.js';
+import EthAddress from './EthAddress';
 
 import ErrorBoundary from './ErrorBoundary'
 // import IpfsTable from './IpfsTable'
@@ -133,7 +133,7 @@ class FileTable extends Component {
                 <thead>
                   <tr>
                   <th><i className="fas fa-file"></i> FileName</th>
-                  <th><i className="fas fa-user"></i> Owner </th>
+                  <th><i className="fas fa-user"></i> Owner Eth Address</th>
                   <th><abbr title="Unique Identifier on the interplanetery file system"> <i className="fas fa-hashtag"></i> Ipfs Hash </abbr> </th>
                   <th><abbr title="Unix Timestamp"> <i className="fas fa-clock"></i>  TimeStamp</abbr></th>
                   <th><i className="fas fa-tag"></i> Tags</th>
@@ -147,8 +147,9 @@ class FileTable extends Component {
                     <td>
                         <EthAddress
                             address = {ipfsRow.owner}
+                            visibleCharacters={12}
                             networkId = {this.props.web3.networkId === undefined ? 1 : this.props.web3.networkId}
-                            copyToClipboard
+                            etherscan
                         />
                         
                     </td>

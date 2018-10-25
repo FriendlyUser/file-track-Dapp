@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ErrorBoundary from '../../components/ErrorBoundary'
+// import UserNameData from './UserNameData'
+import EthAddress from '../../components/EthAddress';
 import PropTypes from 'prop-types'
 
 class Search extends Component {
@@ -39,6 +41,7 @@ class Search extends Component {
         && this.props.contracts.Authentication
         && this.props.contracts.Authentication.initialized
     ){
+        // just find the first ten users
         for(let i=0; i < 10; i++) {
             // Get dataKeys for cache access
             allUsersKey = this.drizzle.contracts.Authentication.methods.allUsers.cacheCall(i)
@@ -46,23 +49,31 @@ class Search extends Component {
             if(this.props.contracts.Authentication.allUsers[allUsersKey]
             ){
                 if(this.props.contracts.Authentication.allUsers[allUsersKey].value !== undefined) {
-                    allUsers.push(this.props.contracts.Authentication.allUsers[allUsersKey].value)
+                    let userAddress = this.props.contracts.Authentication.allUsers[allUsersKey].value
+                    allUsers.push(userAddress)
                 } else {
-                    allUsers.push('N/A')
+                    break
                 }
             }
         }
-        //console.log(rewards)
     }
-    console.log(allUsers)
-    const listItems = allUsers.map((number) =>
-  <li>{number}</li>
-    );
-
     return (
     <ErrorBoundary>
         <div className="container">
-        <ul>{listItems}</ul>
+        <h2> Registered Users </h2>
+        <ul>
+        {
+            allUsers.map((userAddress) =>  
+                <li> 
+                <EthAddress
+                    address = {userAddress}
+                    copyToClipboard
+                />
+                <a href={`../users/${userAddress}`} >Go to User Files</a>
+                </li>
+            )
+        }
+        </ul>
         </div>
     </ErrorBoundary>
     )

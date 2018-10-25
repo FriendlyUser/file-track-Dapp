@@ -29,6 +29,7 @@ class EthAddress extends React.Component {
     compact: true,
     visibleCharacters: 8,
     ethNetwork: 1,
+    networkId: 1,
     copyToClipboard: false,
     etherscan: false,
     className: '',

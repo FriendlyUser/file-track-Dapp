@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { AccountData} from 'drizzle-react-components'
 // import logo from '../../logo.png'
 import UploadFileIPFS from '../../components/UploadFileIPFS'
 
@@ -7,9 +6,9 @@ import FileTable from '../../components/FileTable'
 import LoginForm from '../../components/LoginForm'
 import Search from '../../layouts/search/Search'
 import ErrorBoundary from '../../components/ErrorBoundary'
+import AccountData from '../../components/AccountData'
 class Home extends Component {
   render() {
-    console.log(... this.props)
     return (
     <ErrorBoundary>
       <section className="section">
@@ -31,7 +30,6 @@ class Home extends Component {
         <div className="container">
           <h2>Active Account</h2>
           <AccountData accountIndex="0" units="ether" precision="3" />
-          <h2> Users </h2>
           <Search {... this.props} />
           <br/>
  

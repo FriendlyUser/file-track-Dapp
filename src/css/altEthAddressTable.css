@@ -1,5 +1,5 @@
 .eth-address {
-  padding: 3px;
+  padding: 15px;
   border-radius: 3px;
   position: relative;
 }
@@ -7,26 +7,28 @@
 .eth-address .copy-icon {
   display: none;
   position: absolute;
-  right: 2px;
+  right: -15px;
   top: 4px;
 }
 
 .eth-address.copy-enabled:hover {
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 25px;
   background-color: #eee;
   cursor: pointer;
 }
 
 .eth-address:hover .copy-icon {
-  display: inline-block;
+  display: block;
 }
 
 .eth-address.showing-copied {
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 15px;
 }
 
 .eth-address.showing-copied .copy-icon {
-  display: inline-block;
+  display: block;
 }
 
 .eth-address.error {
