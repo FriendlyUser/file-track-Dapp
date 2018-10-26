@@ -1,9 +1,25 @@
 const NETWORKS = { 
-'1': 'Main Net',
-'2': 'Deprecated Morden',
-'3': 'Ropsten',
-'4': 'Rinkeby',
-'42': 'Kovan',
+'1':  { 
+        name: 'Main Net',
+        color: '#29B6AF'
+      },
+'2': 
+      {
+        name: 'Deprecated Morden',
+        color: '#A2B311'
+      },
+'3':  {
+        name: 'Ropsten',
+        color: '#FF4A8D'
+      },
+'4':  {
+        name: 'Rinkeby',
+        color: '#F6C343'
+      },
+'42': {
+        name: 'Kovan',
+        color: '#7057ff'
+      },
 } 
 
 const IPFSURL = "https://gateway.ipfs.io/ipfs/"

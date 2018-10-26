@@ -5,7 +5,7 @@ import { NETWORKS } from '../util/constants'
 
 // Add colours in corresponding to the networks, guess it is like setting the class
 const Nav = props => (
-    <nav className="navbar is-link"  aria-label="main navigation">
+    <nav className="navbar is-light"  aria-label="main navigation">
         <div className="navbar-brand">
             <a className="navbar-item" href="/">
                 <strong><i className="fas fa-coins"></i> {props.appName}</strong>
@@ -37,7 +37,9 @@ const Nav = props => (
                     <span className="tag">
                         <i className="fas fa-signal"></i> &nbsp; Network
                     </span>
-                    <span className="tag is-danger">{NETWORKS[props.networkId] || props.networkId }</span>
+                    <span className="tag" style={{backgroundColor: NETWORKS[props.networkId].color}}>
+                        <strong>{NETWORKS[props.networkId].name || "UNKNOWN" } </strong>
+                    </span>
                 </div>
                 </a>
             </div>

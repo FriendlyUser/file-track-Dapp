@@ -67,11 +67,12 @@ class LoadingContainer extends Component {
               </div>
               <div className="media-content">
                 <p className="title is-4">
+                  Warning &nbsp;
                   <span className="icon has-text-danger">
                     <i className="fas fa-ban"></i>
                   </span>
                 </p>
-                <p className="subtitle is-6">We can't find any Ethereum accounts!</p>
+                <p className="subtitle is-6">Why am I seeing this message?</p>
               </div>
             </div>
             <div className="content">
