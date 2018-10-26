@@ -58,15 +58,13 @@ matrix:
         #- ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten || true
         - npm run build
       deploy:
-         provider: pages
-         skip-cleanup: true
-         local_dir: site
-         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-         keep-history: true
-         on:
-           #branch: master
-           all_branches: true
-    # Python mk docs 
+        provider: surge
+        project:  build_webpack
+        skip-cleanup: true
+        domain: IPFSDapp.surge.sh
+        on:
+          all_branches: true
+   # Python mk docs 
     -  language: python
        python:
          - "2.7"
@@ -81,9 +79,11 @@ matrix:
          - ls 
          #- mv docs/ site/
        deploy:
-        provider: surge
-        project:  build_webpack
-        skip-cleanup: true
-        domain: IPFSDapp.surge.sh  
-        on:
-          all_branches: true
+         provider: pages
+         skip-cleanup: true
+         local_dir: site
+         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+         keep-history: true
+         on:
+           #branch: master
+           all_branches: true
