@@ -5,7 +5,8 @@
 
 Simple Dapp that can track files uploaded to IPFS.
 
-Available at http://IPFSDapp.surge.sh
+App at https://FriendlyUser.github.io/file-track-Dapp
+Docs at http://IPFSDapp.surge.sh
 
 ![Screenshot](https://gateway.ipfs.io/ipfs/Qmb1ZEhXaTCfzdgVxXmW3WqfcjCRG4ctsieP2zkuhFZRtP)
 Built using standard truffle and solidity.
