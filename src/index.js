@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Router, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { DrizzleProvider } from 'drizzle-react'
 
 import App from './App'
