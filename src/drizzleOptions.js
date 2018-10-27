@@ -19,7 +19,7 @@ const drizzleOptions = {
     // TutorialToken
   ],
   events: {
-    Authentication: ['UserCreated','UserUpdated','UserDeleted'],
+    Authentication: ['UserCreated', 'UserUpdated', 'UserDeleted'],
     FileList: ['fileAdded']
     // SimpleStorage: ['StorageSet']
   },

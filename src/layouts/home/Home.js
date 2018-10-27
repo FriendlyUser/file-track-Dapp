@@ -8,35 +8,34 @@ import Search from '../../layouts/search/Search'
 import ErrorBoundary from '../../components/ErrorBoundary'
 import AccountData from '../../components/AccountData'
 class Home extends Component {
-  render() {
+  render () {
     return (
-    <ErrorBoundary>
-      <section className="section">
-        <div className="container">
-          <h1 className="title">
+      <ErrorBoundary>
+        <section className='section'>
+          <div className='container'>
+            <h1 className='title'>
             Getting started
-          </h1>
-          <p className="subtitle">
+            </h1>
+            <p className='subtitle'>
            File out Form and upload an image to decentralized <strong>IPFS</strong>!
-          </p>
-          <LoginForm {... this.props } />
-          <hr />
-          <UploadFileIPFS {... this.props } />
-          
+            </p>
+            <LoginForm {... this.props} />
+            <hr />
+            <UploadFileIPFS {... this.props} />
 
-          <br/><br/>
-        </div>
+            <br /><br />
+          </div>
 
-        <div className="container">
-          <h2>Active Account</h2>
-          <AccountData accountIndex="0" units="ether" precision="3" />
-          <Search {... this.props} />
-          <br/>
- 
-          <FileTable fileOwnerAddress ={this.props.accounts[0]} {... this.props} />
-        </div>
-  
-        {/**
+          <div className='container'>
+            <h2>Active Account</h2>
+            <AccountData accountIndex='0' units='ether' precision='3' />
+            <Search {... this.props} />
+            <br />
+
+            <FileTable fileOwnerAddress={this.props.accounts[0]} {... this.props} />
+          </div>
+
+          {/**
         <div class="level">
           <div class="level-item has-text-centered">
             <div>
@@ -63,8 +62,8 @@ class Home extends Component {
             </div>
           </div>
         */}
-      </section>
-    </ErrorBoundary>
+        </section>
+      </ErrorBoundary>
     )
   }
 }

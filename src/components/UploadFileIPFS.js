@@ -253,15 +253,6 @@ class UploadFileIPFS extends Component {
                 </form>
 
                 <hr/>
-                { /**
-                    this.state.imageUploading  &&
-                        <figure style={{textAlign: 'center'}} >
-                            <img src={loader} alt="loading image" />
-                            <figcaption> 
-                                {this.state.imageUploading && TXNMSGS[this.state.txMSG]}
-                            </figcaption>
-                        </figure>
-                */}
                 
                 { this.state.imageUploading &&
                     <article class="message is-success">

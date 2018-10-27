@@ -3,14 +3,13 @@ import NavContainer from './components/NavContainer'
 import 'bulma/css/bulma.css'
 
 class App extends Component {
-  
-  render() {
+  render () {
     return (
-      <div className="App">
-      <NavContainer />
-      {this.props.children}
+      <div className='App'>
+        <NavContainer />
+        {this.props.children}
       </div>
-    );
+    )
   }
 }
 

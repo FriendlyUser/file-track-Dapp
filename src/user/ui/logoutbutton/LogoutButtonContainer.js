@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogoutUserClick: (event) => {
-      event.preventDefault();
+      event.preventDefault()
 
       dispatch(logoutUser())
     }

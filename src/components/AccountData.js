@@ -7,20 +7,20 @@ import EthAddress from './EthAddress'
  */
 
 class AccountData extends Component {
-  constructor(props, context) {
-    super(props);
+  constructor (props, context) {
+    super(props)
 
-    this.precisionRound = this.precisionRound.bind(this);
+    this.precisionRound = this.precisionRound.bind(this)
   }
 
-  precisionRound(number, precision) {
+  precisionRound (number, precision) {
     var factor = Math.pow(10, precision)
     return Math.round(number * factor) / factor
   }
 
-  render() {
+  render () {
     // No accounts found.
-    if(Object.keys(this.props.accounts).length === 0) {
+    if (Object.keys(this.props.accounts).length === 0) {
       return (
         <span>Initializing...</span>
       )
@@ -41,14 +41,14 @@ class AccountData extends Component {
       balance = this.precisionRound(balance, this.props.precision)
     }
 
-    return(
+    return (
       <div>
         <h3>
-        <EthAddress
-            address = {address}
+          <EthAddress
+            address={address}
             visibleCharacters={26}
             copyToClipboard
-        />
+          />
         </h3>
         <p>{balance} {units}</p>
       </div>
@@ -67,7 +67,7 @@ AccountData.contextTypes = {
 const mapStateToProps = state => {
   return {
     accounts: state.accounts,
-    accountBalances: state.accountBalances    
+    accountBalances: state.accountBalances
   }
 }
 

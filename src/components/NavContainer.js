@@ -3,16 +3,16 @@ import { drizzleConnect } from 'drizzle-react'
 
 import Nav from './Nav'
 
-import '@fortawesome/fontawesome-free/css/all.css';
+import '@fortawesome/fontawesome-free/css/all.css'
 class NavContainer extends Component {
-    render(){
-        return (
-            <Nav
-                appName="IpfsDapp"
-                networkId={this.props.web3.networkId}
-            />
-        )
-    }
+  render () {
+    return (
+      <Nav
+        appName='IpfsDapp'
+        networkId={this.props.web3.networkId}
+      />
+    )
+  }
 }
 
 const mapStateToProps = state => {

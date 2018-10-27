@@ -7,29 +7,29 @@ import PropTypes from 'prop-types'
  */
 
 class UserNameData extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props)
 
     this.contracts = context.drizzle.contracts
 
     // Get the contract ABI
-    const abi = this.contracts[this.props.contract].abi;
+    const abi = this.contracts[this.props.contract].abi
 
     // Fetch initial value from chain and return cache key for reactive updates.
     var methodArgs = this.props.methodArgs ? this.props.methodArgs : []
     this.dataKey = this.contracts[this.props.contract].methods[this.props.method].cacheCall(...methodArgs)
   }
 
-  render() {
+  render () {
     // Contract is not yet intialized.
-    if(!this.props.contracts[this.props.contract].initialized) {
+    if (!this.props.contracts[this.props.contract].initialized) {
       return (
         <span>Initializing...</span>
       )
     }
 
     // If the cache key we received earlier isn't in the store yet; the initial value is still being fetched.
-    if(!(this.dataKey in this.props.contracts[this.props.contract][this.props.method])) {
+    if (!(this.dataKey in this.props.contracts[this.props.contract][this.props.method])) {
       return (
         <span>Fetching...</span>
       )
@@ -61,7 +61,7 @@ class UserNameData extends Component {
         <li key={index}>{`${datum}`}{pendingSpinner}</li>
       })
 
-      return(
+      return (
         <ul>
           {displayListItems}
         </ul>
@@ -76,7 +76,7 @@ class UserNameData extends Component {
       Object.keys(displayData).forEach((key) => {
         if (i != key) {
           displayObjectProps.push(<li key={i}>
-            <strong>{key}</strong>{pendingSpinner}<br/>
+            <strong>{key}</strong>{pendingSpinner}<br />
             {`${displayData[key]}`}
           </li>)
         }
@@ -84,14 +84,14 @@ class UserNameData extends Component {
         i++
       })
 
-      return(
+      return (
         <ul>
           {displayObjectProps}
         </ul>
       )
     }
     // update to point to the url containing a user's files
-    return(
+    return (
       <span>{`${displayData}`}{pendingSpinner}</span>
     )
   }

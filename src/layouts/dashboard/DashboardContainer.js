@@ -10,6 +10,6 @@ const mapStateToProps = state => {
   }
 }
 
-const DashboardContainer = drizzleConnect(Dashboard, mapStateToProps);
+const DashboardContainer = drizzleConnect(Dashboard, mapStateToProps)
 
 export default DashboardContainer

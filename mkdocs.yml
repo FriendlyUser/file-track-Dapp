@@ -9,6 +9,3 @@ nav:
       - 'Authentication': 'contracts/Authentication.md'
       - 'FileList': 'contracts/FileList.md'    
       - 'Migrations': 'contracts/Migrations.md'
-      - 'Simple Storage': 'contracts/SimpleStorage.md'
-      - 'Complex Storage': 'contracts/ComplexStorage.md'
-      - 'Tutorial Token': 'contracts/TutorialToken.md'

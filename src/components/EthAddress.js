@@ -8,6 +8,7 @@ import { isAddress } from '../util/util';
 import '../css/ethAddress.css';
 
 class EthAddress extends React.Component {
+   // TODO change to more standardized approach to initial variables
   static propTypes = {
     // eth address
     address: string,

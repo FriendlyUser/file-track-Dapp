@@ -11,4 +11,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default drizzleConnect(LoginForm, mapStateToProps);
+export default drizzleConnect(LoginForm, mapStateToProps)

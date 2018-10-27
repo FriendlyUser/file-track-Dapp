@@ -9,6 +9,6 @@ const mapStateToProps = state => {
   }
 }
 
-const SearchContainer = drizzleConnect(Search, mapStateToProps);
+const SearchContainer = drizzleConnect(Search, mapStateToProps)
 
 export default SearchContainer

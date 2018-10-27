@@ -10,6 +10,6 @@ const mapStateToProps = state => {
   }
 }
 
-const UserListContainer = drizzleConnect(Search, mapStateToProps);
+const UserListContainer = drizzleConnect(Search, mapStateToProps)
 
 export default UserListContainer
