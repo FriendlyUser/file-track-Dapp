@@ -63,7 +63,7 @@ matrix:
         provider: surge
         project:  build_webpack
         skip-cleanup: true
-        domain: IPFSDapp.surge.sh  
+        domain: ipfsdapp.surge.sh  
         on:
           all_branches: true
    # Python mk docs 
