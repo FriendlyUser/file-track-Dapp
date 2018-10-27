@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Uses drizzle and truffle to store ipfs hashes in a smart contract",
   "repository": "https://github.com/FriendlyUser/file-track-Dapp",
-  "homepage": "https://friendlyuser.github.io/file-track-Dapp/",
+  "homepage": "http://ipfsdapp.surge.sh",
   "license": "Mozilla-Public-License-2.0",
   "devDependencies": {
     "coveralls": "^3.0.2",

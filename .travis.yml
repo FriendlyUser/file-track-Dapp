@@ -57,14 +57,14 @@ matrix:
         - ./node_modules/truffle/build/cli.bundled.js compile || true
         #- ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten || true
         - npm run build
+        - cd build_webpack
+        - mv index.html 200.html
       deploy:
-         provider: pages
+         provider: surge
+         project: build_webpack
          skip-cleanup: true
-         local_dir: build_webpack
-         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-         keep-history: true
+         domain: ipfsdapp.surge.sh
          on:
-           #branch: master
            all_branches: true
            
    # Python mk docs 
@@ -81,11 +81,12 @@ matrix:
          - cd site 
          - ls 
          #- mv docs/ site/
-       deploy:
-         provider: surge
-         project:  site
+      deploy:
+         provider: pages
          skip-cleanup: true
-         domain: ipfsdapp.surge.sh
+         local_dir: site
+         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+         keep-history: true
          on:
+           #branch: master
            all_branches: true
-       

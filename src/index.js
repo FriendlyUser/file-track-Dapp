@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route } from 'react-router'
+import { BrowserRouter, Router, Route } from 'react-router-dom'
 import { DrizzleProvider } from 'drizzle-react'
 
 import App from './App'
@@ -18,7 +18,7 @@ import drizzleOptions from './drizzleOptions'
 ReactDOM.render((
     <DrizzleProvider options={drizzleOptions} store={store}>
       <LoadingContainer>
-        <Router history={history} store={store}>
+        <BrowserRouter history={history} basename={process.env.PUBLIC_URL}>
           <App>
              <Route exact path= '/' component={HomeContainer}/>
              <Route exact path="/dashboard" component={DashboardContainer} />
@@ -26,7 +26,7 @@ ReactDOM.render((
              <Route path="/users/:id" 
                render={({match}) => <FileTable fileOwnerAddress={match.params.id}/>} />
           </App>
-        </Router>
+        </BrowserRouter>
       </LoadingContainer>
     </DrizzleProvider>
   ),
