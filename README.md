@@ -51,6 +51,13 @@ Uses the css framework bulma and font-awesome for icons.
 - [ ] Add Contact Us Page, FAQ Page, etc ...
 - [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
 
+## Prereqs 
+
+1. node / npm and/or yarn
+2. Ethereum Browser (metamask or coinbase wallet)
+3. Static hosting (github pages and/or surge)
+4. truffle, ganache-cli 
+ 
 ## Installation
 
 1. Install Truffle and Ganache CLI globally. If you prefer, the graphical version of Ganache works as well!
