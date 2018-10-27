@@ -100,10 +100,10 @@ class EthAddress extends React.Component {
         </span>
       );
     }
-    const currentNetwork = NETWORKS[networkId].name.toLowerCase()   
+    const currentNetworkName = NETWORKS[networkId].name.toLowerCase()   
     
     // This is the etherscanURL for a user/contract
-    const etherscanURL = currentNetwork === 1 ? "https://etherscan.io/address/" : "https://" + currentNetwork  + ".etherscan.io/address/"
+    const etherscanURL = networkId === 1 ? "https://etherscan.io/address/" : "https://" + currentNetworkName  + ".etherscan.io/address/"
     
     const classes = `eth-address ${className} ${copyToClipboard ? 'copy-enabled' : ''} ${showingCopied ? 'showing-copied' : ''}`;
     
