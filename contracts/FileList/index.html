@@ -116,9 +116,6 @@
 
 <h1 id="filelist">FileList</h1>
 <p><a href="https://github.com/FriendlyUser/file-track-Dapp/tree/master/contracts/FileList.sol">see the source</a></p>
-<blockquote>
-<p>Author: David Li</p>
-</blockquote>
 <p><strong>Execution cost</strong>: less than 418 gas</p>
 <p><strong>Deployment cost</strong>: less than 382200 gas</p>
 <p><strong>Combined cost</strong>: less than 382618 gas</p>
@@ -140,31 +137,12 @@
 </ol>
 <h2 id="methods">Methods</h2>
 <h3 id="addfilestringbytes32bytes325">addFile(string,bytes32,bytes32[5])</h3>
-<blockquote>
-<p>updates mappings todos and lastIds</p>
-<p>Add a file to the list</p>
-</blockquote>
 <p><strong>Execution cost</strong>: No bound available</p>
 <p>Params:</p>
 <ol>
-<li>
-<p><strong>ipfshash</strong> <em>of type <code>string</code></em></p>
-<blockquote>
-<p>an ipfshash returned after an image is finished uploaded</p>
-</blockquote>
-</li>
-<li>
-<p><strong>_filename</strong> <em>of type <code>bytes32</code></em></p>
-<blockquote>
-<p>name of file as a bytes32 as filenames should be short</p>
-</blockquote>
-</li>
-<li>
-<p><strong>tags</strong> <em>of type <code>bytes32[5]</code></em></p>
-<blockquote>
-<p>array of bytes32 used for sorting/searching files (e,g. blockchain, school, textbook)</p>
-</blockquote>
-</li>
+<li><strong>ipfshash</strong> <em>of type <code>string</code></em></li>
+<li><strong>_filename</strong> <em>of type <code>bytes32</code></em></li>
+<li><strong>tags</strong> <em>of type <code>bytes32[5]</code></em></li>
 </ol>
 <hr />
 <h3 id="filesaddressuint256">files(address,uint256)</h3>
@@ -185,25 +163,12 @@
 </ol>
 <hr />
 <h3 id="getfiletagsaddressuint256">getFileTags(address,uint256)</h3>
-<blockquote>
-<p>return the tags for a specific file </p>
-</blockquote>
 <p><strong>Execution cost</strong>: No bound available</p>
 <p><strong>Attributes</strong>: constant</p>
 <p>Params:</p>
 <ol>
-<li>
-<p><strong>owner</strong> <em>of type <code>address</code></em></p>
-<blockquote>
-<p>--- address of person who uploaded the file </p>
-</blockquote>
-</li>
-<li>
-<p><strong>_index</strong> <em>of type <code>uint256</code></em></p>
-<blockquote>
-<p>--- the file desired, (first file uploaded, second , etc ...)</p>
-</blockquote>
-</li>
+<li><strong>owner</strong> <em>of type <code>address</code></em></li>
+<li><strong>_index</strong> <em>of type <code>uint256</code></em></li>
 </ol>
 <p>Returns:</p>
 <ol>
