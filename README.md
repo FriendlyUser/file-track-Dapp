@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/FriendlyUser/file-track-Dapp.svg?branch=master)](https://travis-ci.org/FriendlyUser/file-track-Dapp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/FriendlyUser/file-track-Dapp/badge.svg?branch=master)](https://coveralls.io/github/FriendlyUser/file-track-Dapp?branch=master)
+[![Build Status](https://travis-ci.org/FriendlyUser/file-track-Dapp.svg?branch=master)](https://travis-ci.org/FriendlyUser/file-track-Dapp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/FriendlyUser/file-track-Dapp/badge.svg?branch=master)](https://coveralls.io/github/FriendlyUser/file-track-Dapp?branch=master) 
+[![GitHub license](https://img.shields.io/github/license/FriendlyUser/file-track-Dapp.svg)](https://github.com/FriendlyUser/file-track-Dapp/blob/master/LICENSE)
+
 
 # File-track Dapp 
 
