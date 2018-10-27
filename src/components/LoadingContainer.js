@@ -35,6 +35,26 @@ class LoadingContainer extends Component {
 
     if (this.props.web3.status === 'initialized' && Object.keys(this.props.accounts).length === 0)
     {
+     /** 
+      * https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
+      * Trying to enable ethereum ?
+      */
+      if (window.ethereum) {
+        // figure out later
+        // window.web3 = new Web3(ethereum);
+        // ethereum.enable()
+        /**
+        window.ethereum.enable()
+        .then(() => {
+            console.log('woo?')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+        */
+  
+      }
+
       return(
         <main className="container loading-screen">
           <div className="card">
@@ -47,11 +67,12 @@ class LoadingContainer extends Component {
               </div>
               <div className="media-content">
                 <p className="title is-4">
+                  Warning &nbsp;
                   <span className="icon has-text-danger">
                     <i className="fas fa-ban"></i>
                   </span>
                 </p>
-                <p className="subtitle is-6">We can't find any Ethereum accounts!</p>
+                <p className="subtitle is-6">Why am I seeing this message?</p>
               </div>
             </div>
             <div className="content">

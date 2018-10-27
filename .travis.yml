@@ -56,12 +56,14 @@ matrix:
         - wget https://faucet.ropsten.be/donate/0xe2e379daf0e1237612ba870fa730c6b45e553563 || true
         - ./node_modules/truffle/build/cli.bundled.js compile || true
         #- ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten || true
-        - npm run build
+        - npm run build 
+		- cd build_webpack
+		- mv index.html 200.html
       deploy:
         provider: surge
         project:  build_webpack
         skip-cleanup: true
-        domain: IPFSDapp.surge.sh  
+        domain: ipfsdapp.surge.sh  
         on:
           all_branches: true
    # Python mk docs 

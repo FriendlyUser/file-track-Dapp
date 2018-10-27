@@ -29,6 +29,7 @@ class EthAddress extends React.Component {
     compact: true,
     visibleCharacters: 8,
     ethNetwork: 1,
+    networkId: 1,
     copyToClipboard: false,
     etherscan: false,
     className: '',
@@ -99,10 +100,10 @@ class EthAddress extends React.Component {
         </span>
       );
     }
-    const currentNetwork = NETWORKS[networkId].toLowerCase()   
+    const currentNetworkName = NETWORKS[networkId].name.toLowerCase()   
     
     // This is the etherscanURL for a user/contract
-    const etherscanURL = currentNetwork === 1 ? "https://etherscan.io/address/" : "https://" + currentNetwork  + ".etherscan.io/address/"
+    const etherscanURL = networkId === 1 ? "https://etherscan.io/address/" : "https://" + currentNetworkName  + ".etherscan.io/address/"
     
     const classes = `eth-address ${className} ${copyToClipboard ? 'copy-enabled' : ''} ${showingCopied ? 'showing-copied' : ''}`;
     

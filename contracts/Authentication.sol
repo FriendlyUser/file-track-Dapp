@@ -12,7 +12,8 @@ contract Authentication {
   event UserCreated(address indexed _address, bytes32 _name, uint256 _created_at);
   event UserUpdated(address indexed _address, bytes32 _name);
   event UserDeleted(address indexed _address);
-
+  
+  // make info public???
   mapping (address => User) private users;
   
   // public array that contains list of all users that have registered 

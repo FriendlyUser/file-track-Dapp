@@ -55,5 +55,6 @@ contract FileList {
    function getFileTags(address owner, uint256 _index) external view returns (bytes32[5]) {
        return files[owner][_index].tags;
   }
+  // consider adding functionality to transfer files, but probably down the road
 
 }

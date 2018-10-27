@@ -2,6 +2,8 @@
 const HDWalletProvider = require('truffle-hdwallet-provider')
 require('dotenv').config()
 const mnemonic = process.env.HDWALLET_MNEMONIC
+console.log(process.env.INFURA_API_KEY)
+console.log(mnemonic)
 module.exports = {
   migrations_directory: "./migrations",
   networks: {
@@ -10,8 +12,21 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
+    mainnet: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://mainnet.infura.io/v3" + process.env.INFURA_API_KEY)
+     },
+     network_id: 1,
+     gasPrice: 6000000000,
+     gas: 6000000
+      // gasPrice: 400000000000
+      // gas: 3000000,
+      // gasPrice: 21
+      // gas: 4000000,
+      // gasPrice: 2892111612
+    },
     ropsten: {
-      provider: new HDWalletProvider(process.env.MNENOMIC, "https://ropsten.infura.io/" + process.env.INFURA_API_KEY),
+      provider: new HDWalletProvider(process.env.MNENOMIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY),
       network_id: 3,
       gas: 3000000,
       gasPrice: 21
@@ -19,13 +34,13 @@ module.exports = {
       //gasPrice: 2892111612
     },
     rinkeby: {
-      provider: new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/" + process.env.INFURA_API_KEY),
+      provider: new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/" + process.env.INFURA_API_KEY),
       network_id: 4,
       //gas: 6000000,
       //gasPrice: 28921116127
     },
     kovan: {
-      provider: new HDWalletProvider(mnemonic, "https://kovan.infura.io/" + process.env.INFURA_API_KEY),
+      provider: new HDWalletProvider(mnemonic, "https://kovan.infura.io/v3/" + process.env.INFURA_API_KEY),
       network_id: 42,
       //gas: 4612388,
       //gasPrice: 28921116127
