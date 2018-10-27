@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FriendlyUser/file-track-Dapp.svg?branch=master)](https://travis-ci.org/FriendlyUser/file-track-Dapp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Coverage Status](https://coveralls.io/repos/github/FriendlyUser/file-track-Dapp/badge.svg?branch=master)](https://coveralls.io/github/FriendlyUser/file-track-Dapp?branch=master) 
-[![GitHub license](https://img.shields.io/github/license/FriendlyUser/file-track-Dapp.svg)](https://github.com/FriendlyUser/file-track-Dapp/blob/master/LICENSE) [![Etherscan] (https://img.shields.io/badge/Etherscan-verified-red.svg)](https://etherscan.io/address/0x4e8fec85a98c03bd6187c1eb96462cd3c5586664#code
+[![GitHub license](https://img.shields.io/github/license/FriendlyUser/file-track-Dapp.svg)](https://github.com/FriendlyUser/file-track-Dapp/blob/master/LICENSE) [![Etherscan](https://img.shields.io/badge/Etherscan-verified-red.svg)](https://etherscan.io/address/0x4e8fec85a98c03bd6187c1eb96462cd3c5586664#code)
 
 
 # File-track Dapp 
@@ -44,12 +44,12 @@ Uses the css framework bulma and font-awesome for icons.
 - [x] Add component for viewing files for self, use bulma table.
 - [x] Boilerplate for Front-end testing
 - [x] Add component for viewing files for other users
-- [ ] Deploy Contracts to main net and then upload a few files.
+- [x] Deploy Contracts to main net and then upload a few files.
+- [x] Load different colours based on network
 - [ ] Improve Form Validation and UI
 - [ ] Try to add drizzle-front-end testing for components, this ought to be fun, maybe write an medium article about this.
 - [ ] Add Contact Us Page, FAQ Page, etc ...
 - [ ] Polish app, adding loading icons or render bulma icons, or font-awesome loading icons, add Contact Page.
-- [ ] Load different colours based on network
 
 ## Installation
 
