@@ -1,6 +1,6 @@
 {
   "name": "file-track-ipfs",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "Uses drizzle and truffle to store ipfs hashes in a smart contract",
   "repository": "https://github.com/FriendlyUser/file-track-Dapp",
   "homepage": "http://ipfsdapp.surge.sh",
@@ -54,6 +54,7 @@
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.1",
+    "react-pdf": "^4.0.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
