@@ -1,6 +1,6 @@
 {
   "name": "file-track-ipfs",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Uses drizzle and truffle to store ipfs hashes in a smart contract",
   "repository": "https://github.com/FriendlyUser/file-track-Dapp",
   "homepage": "http://ipfsdapp.surge.sh",
