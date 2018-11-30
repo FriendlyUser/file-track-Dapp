@@ -34,12 +34,16 @@ class IPFSPdf extends Component {
   }
 
   renderPagination = (pageNumber, numPages) => {
+	/* eslint-disable */
     let previousButton = <div className="pdf-pagination-left" onClick={this.handlePrevious}><a href="#/"><i className="fa fa-arrow-left"></i> Previous</a></div>;
     if (pageNumber === 1) {
+	  /* eslint-disable */
       previousButton = <div className="pdf-pagination-left disabled"><a href="#/"><i className="fa fa-arrow-left"></i> Previous</a></div>;
     }
+	/* eslint-disable */
     let nextButton = <div className="pdf-pagination-right" onClick={this.handleNext}><a href="#">Next <i className="fa fa-arrow-right"></i></a></div>;
     if (pageNumber === numPages) {
+	  /* eslint-disable */
       nextButton = <div className="pdf-pagination-right disabled"><a href="#/">Next <i className="fa fa-arrow-right"></i></a></div>;
     }
     return (
