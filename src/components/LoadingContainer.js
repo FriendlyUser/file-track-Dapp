@@ -1,10 +1,10 @@
 import { drizzleConnect } from 'drizzle-react'
 import React, { Children, Component } from 'react'
 import PropTypes from 'prop-types'
+import metamask from '../metamask.png'
+import IPFSPdf from './IPFSPdf'
 
 import '@fortawesome/fontawesome-free/css/all.css'
-
-import metamask from '../metamask.png'
 /*
  * Create component.
  */
@@ -33,26 +33,6 @@ class LoadingContainer extends Component {
     }
 
     if (this.props.web3.status === 'initialized' && Object.keys(this.props.accounts).length === 0) {
-      /**
-      * https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
-      * Trying to enable ethereum ?
-      */
-      if (window.ethereum) {
-        // figure out later
-        // window.web3 = new Web3(ethereum);
-        // ethereum.enable()
-        /**
-        window.ethereum.enable()
-        .then(() => {
-            console.log('woo?')
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-        */
-
-      }
-
       return (
         <main className='container loading-screen'>
           <div className='card'>
@@ -74,10 +54,10 @@ class LoadingContainer extends Component {
                 </div>
               </div>
               <div className='content'>
-                <strong> We can't find any Ethereum accounts! </strong> <p> Please check and make sure Metamask or your browser are pointed at the correct network and your account is unlocked. </p> <a>@bulmaio</a>. Please download an Ethereum Browser such as Metamask.
+                <strong> We can't find any Ethereum accounts! </strong> <p> Please check and make sure Metamask or your browser are pointed at the correct network and your account is unlocked. </p> Please download an Ethereum Browser such as Metamask.
                 {/** <a href="#">#css</a> <a href="#">#responsive</a> */}
                 <br />
-                <time datetime='2018-9-9'>11:09 PM - 1 September 2018</time>
+                <time datetime='2018-9-9'>Updated at 28 November 2018</time>
               </div>
             </div>
             <footer className='card-footer'>
@@ -101,6 +81,15 @@ class LoadingContainer extends Component {
               </a>
             </footer>
           </div>
+          <br />
+          <br />
+          <hr />
+          <h2><a href={'https://gateway.ipfs.io/ipfs/QmZb7crH2YYqwvq5d2pCjZxAovzqXkhWwnEE993UM4jikk'} target={'_blank'}>Sample IPFS Pdf</a></h2>
+          <IPFSPdf
+            fileURL='https://gateway.ipfs.io/ipfs/QmZb7crH2YYqwvq5d2pCjZxAovzqXkhWwnEE993UM4jikk'
+            showImage={true}
+            scale={2}
+          />
         </main>
       )
     }

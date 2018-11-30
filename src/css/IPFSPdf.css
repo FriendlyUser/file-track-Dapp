@@ -1,0 +1,44 @@
+.pdf-pagination {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+.pdf-pagination-right {
+  display: inline;
+  margin-left: 15px;
+}
+
+.pdf-pagination-left {
+  display: inline;
+}
+
+.pdf-pagination-content {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.pdf-pagination-content > button {
+  margin-left: 15px;
+  text-transform: none;
+}
+
+.doc-toogle-button {
+  color: #323232;
+  background: #ffdc6f !important;
+}
+.pdf-pagination-left.disabled {
+  /* Disables the button completely. Better than just cursor: default; */
+  pointer-events: none;
+  opacity: 0.7;
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
+.pdf-pagination-right.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
