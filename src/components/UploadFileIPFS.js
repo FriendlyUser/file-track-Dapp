@@ -7,6 +7,7 @@ import EthAddress from './EthAddress.js';
 //import { ContractData } from 'drizzle-react-components'
 
 import ipfs from '../util/ipfs'
+// import { exists } from 'fs';
 
 // Use bulma loader
 // import loader from '../../../images/Pacman-1s-200px.svg'
@@ -36,7 +37,8 @@ class UploadFileIPFS extends Component {
              formErrors: {fileName: '', tags: ''},
              fileNameValid: false,
              tagsValid: false,
-             formValid: false
+             formValid: false,
+             canSubmit: false
         }
     }
     
@@ -50,6 +52,9 @@ class UploadFileIPFS extends Component {
         let reader = new window.FileReader()
         reader.readAsArrayBuffer(file)
         reader.onloadend = () => this.convertToBuffer(reader)
+        this.setState({
+            canSubmit: true
+        })
       }
     //Convert the file to buffer to store on IPFS
     convertToBuffer = async(reader) => {
@@ -69,6 +74,8 @@ class UploadFileIPFS extends Component {
         this.setState({txMSG: 'Uploading Image to IPFS'})
         //save document to IPFS,return its hash#, and set hash# to state
         await ipfs.add(this.state.buffer, (err, ipfsHash) => {
+            console.log(err)
+            console.log(ipfsHash)
             //console.log(err,ipfsHash);
             //setState by setting ipfsHash to ipfsHash[0].hash
             this.setState({ ipfsHash:ipfsHash[0].hash });
@@ -104,7 +111,7 @@ class UploadFileIPFS extends Component {
             })
             .on('error', error => { 
                 //console.log('Error has Occured: ' + error)
-                this.setState({txMSG: 'Transacation failed'})
+                this.setState({txMSG: 'Transaction failed'})
             })
         })
     }
@@ -244,10 +251,10 @@ class UploadFileIPFS extends Component {
                     </div>
                         <div className="field is-grouped">
                             <div className="control">
-                            <button className="button is-link" onClick= {this.onSubmit}>Submit</button>
+                            <button className="button is-link" onClick= {this.onSubmit}  disabled={!this.state.canSubmit}>Submit</button>
                             </div>
                             <div className="control">
-                            <button className="button is-text">Cancel</button>
+                            <button className="button is-text"> Cancel</button>
                             </div>
                         </div> 
                 </form>
