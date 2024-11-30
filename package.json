@@ -32,7 +32,7 @@
     "drizzle": "1.2.0",
     "drizzle-react": "1.1.1",
     "drizzle-react-components": "1.2.0",
-    "eslint": "4.10.0",
+    "eslint": "4.19.1",
     "eslint-config-react-app": "2.1.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-flowtype": "2.39.1",
